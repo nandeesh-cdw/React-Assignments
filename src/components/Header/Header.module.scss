@@ -1,0 +1,10 @@
+@import '../../styles/global.scss';
+
+.header{
+    margin-bottom: 50px;
+    .header_title{
+        font-family: $primary-font;
+        font-weight: $font-weight-700;
+        font-size: 40px;
+    }
+}
