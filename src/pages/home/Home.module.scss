@@ -1,0 +1,33 @@
+@import '../../styles/global.scss';
+
+.container {
+    display: flex;
+    flex-direction: column ;
+    width: 100%;
+    .header{
+        margin-bottom: 50px;
+        .header_title{
+            font-family: $primary-font;
+            font-weight: $font-weight-700;
+            font-size: 40px;
+        }
+    }
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .input_box{
+            width: 470px;
+            padding: 25px;
+            border-radius: 5px;
+            border: 1px solid #d0d6ea;
+        }
+    }
+    .card_container{
+        padding-top: 110px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+}

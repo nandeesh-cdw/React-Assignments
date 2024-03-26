@@ -1,0 +1,55 @@
+@import '../../styles/global.scss' ;
+
+.card_wrapper {
+display: flex;
+flex-wrap: wrap;
+background-color: #fbfcff;
+padding:32px;
+border-radius: 15px;
+width: 470px;
+height: 300px;
+gap: 5px;
+    .image_wrapper {
+        // width: 33%;
+        .user_image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+    .user_details_wrapper {
+        width: 64%;
+        display: flex;
+        padding: 30px 20px;
+        row-gap: 10px;
+        flex-direction: column;
+        .username{
+            font-family: $primary-font;
+            font-weight: $font-weight-800;
+            font-size: 20px;
+
+        }
+        .user_location{
+            font-family: $secondary-font;
+            font-weight: $font-weight-600;
+            font-size: 16px;
+        }
+        .user_tags_wrapper{
+            display: flex;
+            padding: 15px 0px 0px 0px;
+            flex-wrap: wrap;
+            column-gap: 5px;
+            max-height: 100px;
+            width: 100%;
+            overflow: scroll;
+            row-gap: 5px;
+        }
+    }
+}
+
+.card_wrapper:hover {
+    background-color: #fff;
+    border: 1.5px solid #d0d6ea ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

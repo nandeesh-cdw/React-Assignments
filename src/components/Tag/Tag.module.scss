@@ -1,0 +1,12 @@
+@import '../../styles/global.scss';
+
+    .tag {
+        font-family: $secondary-font;
+        display: inline;
+        font-weight: $font-weight-700;
+        color: #88a0f8;
+        font-size: 13px;
+        padding: 5px 12px;
+        border: 1px solid #948d8d4d;
+        border-radius: 20px;
+    }
