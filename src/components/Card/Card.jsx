@@ -5,7 +5,7 @@ export const  Card = ({user}) => {
     return (
       <div className={styles.card_wrapper}>
         <div className={styles.image_wrapper}>
-            <img className={styles.user_image} src={user.imgUrl} alt="user" />
+            <img className={styles.user_image} src={user.imgUrl} alt="user"/>
         </div>
         <div className={styles.user_details_wrapper}>
             <div className={styles.username}>
@@ -15,7 +15,7 @@ export const  Card = ({user}) => {
                 {user.location}
             </div>
             <div className={styles.user_tags_wrapper}>
-                {user.tags.map(tag =>(<Tag key={tag} tagName={tag}></Tag>))}
+                {user.tags.map(tag =>(<Tag key={tag} tagName={tag}/>))}
             </div>
         </div>
       </div>

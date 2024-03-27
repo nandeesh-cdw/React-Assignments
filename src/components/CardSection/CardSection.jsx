@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 function CardSection({users}) {
   return (
     <section className={styles.card_container}>
-    {users.map( (user) => <Card user={user}></Card>)}
+    {users.map( (user) => <Card key={user.id} user={user}/>)}
     </section>
   )
 }

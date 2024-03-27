@@ -1,17 +1,36 @@
 import React from 'react';
-import { Search } from '../search/Search';
+import { Search } from '../Search/Search';
 import { Button } from '../Button/Button';
 import styles from './Navbar.module.scss';
+const buttons = [
+  {
+    name:'Reputation',
+    isSelected: false,
+  },
+  {
+    name:'New Users',
+    isSelected: true,
+  },
+  {
+    name:'Voters',
+    isSelected: false,
+  },
+  {
+    name:'Editors',
+    isSelected: false,
+  },
+  {
+    name:'Moderators',
+    isSelected: false,
+  }
+]
+
 function Navbar() {
   return (
     <section className={styles.navbar}>
-            <Search searchText="Search Users"></Search>
+            <Search searchText="Search Users"/>
             <div className={styles.navbar_buttons}>
-                <Button name='Reputation'></Button>
-                <Button name='New Users' selected={true}></Button>
-                <Button name='Voters'></Button>
-                <Button name='Editors'></Button>
-                <Button name='Moderators'></Button>
+                {buttons.map(button => <Button name={button.name} isSelected={button.isSelected}/>)}
             </div>
     </section>
   )
