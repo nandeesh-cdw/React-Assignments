@@ -4,9 +4,9 @@ import Card from '../Card/Card';
 
 function CardSection({users}) {
   return (
-    <section className={styles.card_container}>
-    {users.map( (user) => <Card key={user.id} user={user}/>)}
-    </section>
+    <ul className={styles.card_container}>
+    {users.map( (user) => <li><Card key={user.id} user={user}/></li>)}
+    </ul>
   )
 }
 

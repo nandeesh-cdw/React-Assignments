@@ -29,9 +29,9 @@ function Navbar() {
   return (
     <section className={styles.navbar}>
             <Search searchText="Search Users"/>
-            <div className={styles.navbar_buttons}>
-                {buttons.map(button => <Button name={button.name} isSelected={button.isSelected}/>)}
-            </div>
+            <ul className={styles.navbar_buttons}>
+                {buttons.map(button => <li><Button  key={button.name} name={button.name} isSelected={button.isSelected}/></li>)}
+            </ul>
     </section>
   )
 }
