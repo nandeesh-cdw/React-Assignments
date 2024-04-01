@@ -1,0 +1,10 @@
+@import '../../styles/global.scss';
+
+    .dropdown {
+        appearance: none;
+        width: 700px;
+        height: 70px;
+        padding: 25px 35px;
+        position: relative;
+        border: 1.5px solid $input-border;
+    }

@@ -1,0 +1,26 @@
+@import '../../styles/global.scss';
+//code clean up , add mixins and change to rem 
+.card_wrapper{
+    @include flex-column;
+    width: 475px;
+    height: 780px;
+    .location_image{
+        margin-bottom: 20px;
+    }
+    .title{
+
+        font-size: 37px;
+        font-weight: $font-weight-300;
+        margin-bottom: 10px;
+    }
+    .location{
+        font-size: 18px;
+        font-weight: $font-weight-800;
+        margin-bottom: 30px;
+    }
+    .description{
+        font-size: 20px;
+        font-weight: $font-weight-400;
+        margin-bottom: 20px;
+    }
+}

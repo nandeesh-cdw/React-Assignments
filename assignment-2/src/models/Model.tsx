@@ -1,0 +1,25 @@
+export interface MODELS  {
+    DROPDOWN:string[],
+    DROPDOWNPROPS:{
+        options:MODELS['DROPDOWN'],
+        onValueSelected:any,
+        placeholder:string,
+        value:string
+    },
+    PLACE_LIST:{
+        places:MODELS['PLACE'][]
+    },
+    PLACE:{
+        place:string,
+        city:string,
+        shortDescription:string,
+        fullDescription:string,
+        relatedPlaces:string[]
+    },
+    USER_DATA:{
+        name:string,
+        home_town:string,
+        destination:string,
+        contact:string
+    }
+}

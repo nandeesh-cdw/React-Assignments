@@ -1,0 +1,29 @@
+@import '../../styles/global.scss';
+
+.container{
+    @include flex-column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding:100px 120px;
+    .page_title_wrapper {
+        @include flex-column;
+        .title{
+            font-size: 46px;
+            font-weight: $font-weight-500;
+            color: $primary-color;
+        }
+        .tagline{
+            font-size: 23px;
+            font-weight: $font-weight-400;
+            color: $primary-color-light;
+        }
+    }
+    .cards_section{
+        appearance: none;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 26px;
+        row-gap: 85px;
+        padding: 50px 0px;
+    }
+}

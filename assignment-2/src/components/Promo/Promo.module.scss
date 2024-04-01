@@ -1,0 +1,48 @@
+@import '../../styles/global.scss';
+
+.promo_wrapper{
+    display: flex;
+    justify-content: space-between;
+    .promo_text_wrapper{
+        @include flex-column;
+        padding: 172px 0px 0px 150px;
+        row-gap: 36px;
+        .title_text_wrapper{
+            .title_text{
+                font-size: 24px;
+                color: $primary-color-light;
+                font-weight: $font-weight-500;
+            }
+        }
+        .tag_line_wrapper{
+            .tag_line{
+                font-size: 72px;
+                letter-spacing: 1px;
+                line-height: 85px;
+                color: $primary-color;
+                font-weight: $font-weight-300;
+            }
+        }
+        .location_selection_wrapper{
+            // display: flex;
+            position: relative;
+            .dropdown_wrapper{
+                position: absolute;
+                top:50px;
+            }
+            .button_wrapper{
+                position: absolute;
+                top:140px;
+            }
+        }
+    }
+    .promo_image_wrapper{
+        .promo_image{
+            width: 990px;
+            height: 740px;
+        }
+    }
+}
+.emphasised_text{
+    font-weight: $font-weight-700;
+}

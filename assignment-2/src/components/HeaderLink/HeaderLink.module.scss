@@ -1,0 +1,10 @@
+@import '../../styles/global.scss';
+
+.nav_link{
+    font-family: $primary-font;
+    list-style-type: none;
+    color: #7a1655;
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: $font-weight-500;
+}

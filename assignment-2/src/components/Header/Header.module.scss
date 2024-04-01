@@ -1,0 +1,20 @@
+@import '../../styles/global.scss';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 45px 70px 30px; 
+    .logo_wrapper{
+
+       .logo{
+        width: 140px;
+       }
+    }
+    .nav_link_wrapper{
+        padding-top: 10px;
+        display: flex;
+        list-style-type: none;
+        gap: 60px;
+    }
+}
