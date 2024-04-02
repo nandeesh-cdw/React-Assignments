@@ -18,7 +18,7 @@ function Header() {
         <ul className={styles.nav_link_wrapper}>
         {
         navLinks.map(link => (
-          <HeaderLink link={link.path} name={link.name}/>
+          <HeaderLink key={link.name} link={link.path} name={link.name}/>
         ))
         }
         </ul>
