@@ -4,7 +4,8 @@ export interface MODELS  {
         options:MODELS['DROPDOWN'],
         onValueSelected:any,
         placeholder:string,
-        value:string
+        value:string,
+        isFormInput:boolean
     },
     PLACE_LIST:{
         places:MODELS['PLACE'][]

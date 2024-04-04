@@ -1,10 +1,23 @@
 @import '../../styles/global.scss';
 
-.nav_link{
+.nav_link_wrapper{
     font-family: $primary-font;
     list-style-type: none;
     color: #7a1655;
     font-size: 17px;
     text-decoration: none;
     font-weight: $font-weight-500;
+    text-align: center;
+    cursor: pointer; 
+}
+.nav_link{
+    display: block;
+    text-decoration: none;
+    color: #7a1655;
+    font-size: 17px;
+    height: 50px;
+}
+.nav_link:hover{
+    border-bottom: 1px solid;
+    margin-bottom: -1px;
 }

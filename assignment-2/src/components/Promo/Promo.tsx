@@ -5,6 +5,7 @@ import cover from '../../assets/cover.png';
 import Dropdown from '../Dropdown/Dropdown';
 import { useNavigate } from 'react-router';
 import Cover from '../Cover/Cover';
+import { APP_DATA } from '../../constants/Constants';
 
 
 const options = [
@@ -59,7 +60,7 @@ function Promo(props:any) {
                 </div>
                 <div className={styles.location_selection_wrapper}>
                     <div className={styles.dropdown_wrapper}>
-                        <Dropdown options={options.map(option => option.name)} onValueSelected={onLocationSelected} placeholder='Choose' value={location}/>
+                        <Dropdown options={APP_DATA.DESTINATIONS} onValueSelected={onLocationSelected} placeholder='Choose' value={location} isFormInput={false}/>
                     </div>
                     <div className={styles.button_wrapper}>
                         <Button name='EXPLORE' onButtonClick={onButtonClick}/>

@@ -13,7 +13,6 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* Add more routes as needed */}
           <Route path="*" element={<Home />} />
         </Routes>
         <Form/>

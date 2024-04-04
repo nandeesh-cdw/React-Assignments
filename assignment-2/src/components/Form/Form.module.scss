@@ -25,10 +25,14 @@
         }
         .input_wrapper{
             @include flex-column;
+            gap: 5px;
             .label{
                 font-size: 23px;
                 font-weight: $font-weight-500;
             }
+        }
+        .button_wrapper{
+            margin-top: -10px;
         }
     }
 }

@@ -37,3 +37,19 @@ export const APP_MESSAGES = {
 export const ROUTES = {
     SPECIFIC_PLACE:'https://nijin-server.vercel.app/api/explorer/places/'
 }
+
+export const APP_DATA={
+    DESTINATIONS:[
+        'Chidambaram',
+        'Kumbakonam',
+        'Masinagudi',
+        'Pollachi',
+        'Thanjavur',
+        'Tirunelveli'
+    ],
+    HOME_TOWN:[
+        'Bangalore',
+        'Chennai',
+        'Kerala'
+    ]
+}
