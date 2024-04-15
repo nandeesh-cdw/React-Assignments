@@ -1,0 +1,58 @@
+@import '../../styles/global.scss';
+
+//card 
+ul{
+    list-style-type: none;
+}
+.card {
+    @include flex-column;
+    width: $spacing-20 + $spacing-3 + $spacing-0-5;
+    gap: 12px;
+
+    //image
+    .furniture_image {
+        width: 100%;
+        height: $spacing-10 + $spacing-2 ;
+        border-radius: 0 8px 8px 8px;
+    }
+
+    //details 
+    .furniture_details {
+        display: flex;
+        justify-content: space-between;
+
+        .furniture_name,
+        .furniture_price {
+            font-weight: 600;
+        }
+    }
+
+    //description
+    .furniture_description ,.furniture_quantity{
+        font-size: 11px;
+        color: $light-grey;
+        line-height: 22px;
+    }
+
+    // button section 
+    .button_section {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+    }
+
+    // guarantee 
+    .guarantee {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+        border-bottom: 1px solid $grey;
+        padding: 0 0 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: $green;
+    }
+
+}

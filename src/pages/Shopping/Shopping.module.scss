@@ -1,0 +1,33 @@
+@import '../../styles/global.scss';
+
+.container {
+    display: flex;
+    height: 92vh;
+    // catalog section
+    .catalog_section {
+        display: flex;
+        flex-wrap: nowrap;
+        // width: 100%;
+        flex-basis: 100%;
+        height: 100%;
+        overflow: scroll;
+        //furniture cards 
+        .product_section {
+            display: flex;
+            overflow: scroll;
+            flex-wrap: wrap;
+            margin: auto;
+            padding: $spacing-2 + $spacing-0-75 + $spacing-0-1 44px;
+            column-gap: calc($spacing-2 + $spacing-0-5);
+            row-gap: calc($spacing-2 + $spacing-0-75 + $spacing-0-1);
+        }
+    }
+    // basket section
+    .cart_section {
+        @include flex-column;
+        height: 100%;
+        width: 31.5%;
+        background-color: #f7f7f7;
+
+    }
+}

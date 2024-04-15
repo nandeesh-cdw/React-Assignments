@@ -1,0 +1,18 @@
+@import '../../styles/global.scss';
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    // username 
+    .username {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    // caret 
+    .icon {
+        width: 7px;
+    }
+}

@@ -1,0 +1,69 @@
+@import '../../styles/global.scss';
+
+.item {
+    position: relative;
+    width: 360px;
+    height: 100px;
+
+    // order image
+    .order_image {
+        position: absolute;
+        top: 10px;
+        width: 125px;
+        height: 85px;
+        border-radius: 10px;
+        z-index: 1;
+    }
+
+    // details 
+    .order_details {
+        position: absolute;
+        width: 310px;
+        height: 85px;
+        left: 35px;
+        background-color: $white;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 8px 0px;
+
+        .order_title {
+            cursor:default;
+            display: inline;
+            position: absolute;
+            max-width: 175px;
+            top: 20px;
+            left: 105px;
+            font-size: 14px;
+            font-weight: 300;
+            max-height: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+        .order_price {
+            cursor:default;
+            display: inline;
+            position: relative;
+            top: 50px;
+            left: 105px;
+            font-size: 12px;
+        }
+
+        .order_item_count,
+        .place_order {
+            display: inline;
+            position: absolute;
+            top: 70px;
+            right: 15px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 8px 0px;
+            border-radius: 3px;
+            background-color: $white;
+
+            .quantity {
+                display: inline-block;
+                width: 33px;
+                font-size: 12px;
+                text-align: center;
+            }
+        }
+    }
+}

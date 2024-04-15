@@ -1,0 +1,29 @@
+@import '../../styles/global.scss';
+
+header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: $white;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.375rem;
+    padding: 0 2.8125rem;
+    
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    .logo {
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        color: $black;
+    }
+    // nav bar
+    .nav_bar {
+        display: flex;
+        gap: 70px;
+        height: 100%;
+    }
+}

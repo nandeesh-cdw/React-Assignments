@@ -1,0 +1,53 @@
+@import '../../styles/global.scss';
+
+.basket{
+    @include flex-column;
+    justify-content: space-between;
+    height: 92vh;
+    .orders_section {
+        @include flex-column;
+        height: 800px;
+        gap: 30px;
+        padding: $spacing-2 $spacing-0-75;
+        // items section
+        .order_items {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 0px 0px 0px 20px;
+            overflow: scroll;
+            // cart items / wish list items 
+            .cart_item,.wishlist_item{
+                display: flex;
+                flex-direction: column;
+                gap:20px
+            }
+        }
+        .list_categories{
+            display: flex;
+            gap: 20px;
+        }
+    }
+    // payment section
+    .payment_section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $white;
+        height: 120px;
+        width: 100%;
+        padding: 0 33px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        // price details 
+        .price_details{
+            @include flex-column;
+            gap: 5px;
+            // total amount 
+            .total{
+                font-size: 12px;
+                font-weight: 300;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@import '../../styles/global.scss';
+
+.confirmation_container {
+    @include flex-column;
+    gap: 20px;
+    min-height: $spacing-30 + $spacing-4 + $spacing-0-25 + $spacing-0-1;
+    width: 100%;
+    background-color: $confirm-modal;
+    padding: $spacing-4 + $spacing-0-25 + $spacing-0-1 $spacing-10;
+
+    // title
+    .confirm_title {
+        font-size: $spacing-1 + $spacing-0-25 + $spacing-0-1 ;
+        font-weight: 600;
+    }
+
+    // message
+    .confirm_message {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    // items 
+    .ordered_items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+}

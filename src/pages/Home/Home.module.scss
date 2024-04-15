@@ -1,0 +1,28 @@
+@import '../../styles/global.scss';
+
+.container {
+   @include flex-column;
+   padding: 60px 155px;
+   .title_wrapper {
+    @include flex-column;
+    gap: 15px;
+
+        .heading {
+            font-size: 43px;
+            font-weight:$font-weight-500;
+        }
+
+        .sub_heading {
+            font-size: 28px;
+            font-weight:$font-weight-400;
+        }
+    margin-bottom: 30px;
+    }
+   .card_wrapper {
+    display: flex;
+    min-height: 92vh;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 100%;
+   }
+}

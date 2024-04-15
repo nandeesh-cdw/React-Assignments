@@ -1,0 +1,25 @@
+@import '../../styles/global.scss';
+
+.card {
+    @include flex-column;
+    gap: 12px;
+    width: 450px;
+    
+    .category_image {
+        width: $spacing-20 + $spacing-8 + $spacing-0-1;
+        height: $spacing-30 + $spacing-8 + $spacing-0-1;
+        object-fit: fill;
+    }
+
+    .category_title {
+        text-transform: capitalize;
+        font-size: $spacing-1 + $spacing-0-75;
+        font-weight: 500;
+    }
+
+    .category_description {
+        font-size: $spacing-1;
+        line-height: $spacing-1 + $spacing-0-75 + $spacing-0-1;
+        color: $light-grey;
+    }
+}
