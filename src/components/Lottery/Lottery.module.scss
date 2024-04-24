@@ -1,0 +1,20 @@
+@import '../../styles/global.scss';
+
+.lottery_container {
+    background-color: $mixed-yellow;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .lottery_wrapper {
+        display: flex;
+        column-gap: 40px;
+    }
+    .lottery_message_wrapper{
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: $font-weight-600;
+        color: $white;
+    }
+}

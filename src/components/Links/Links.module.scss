@@ -1,0 +1,11 @@
+@import '../../styles/global.scss';
+
+.links {
+    color: white;
+    font-size: 24px;
+    font-weight: $font-weight-500;
+    text-decoration: none;
+}
+.active_link{
+    color: $light-blue;
+}

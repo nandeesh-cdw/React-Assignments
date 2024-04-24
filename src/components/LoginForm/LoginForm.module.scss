@@ -1,0 +1,45 @@
+@import '../../styles/global.scss';
+
+.form_container{
+    @include flex-column;
+    padding:110px 44px 70px;
+    background-color: $black;
+    opacity: 0.85;
+    width: 460px;
+    max-height:665px;
+    row-gap: 35px;
+    border-top: 5px solid $light-yellow;
+    .form_title_wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 35px;
+        .form_title{
+            font-size: 44px;
+            font-weight: $font-weight-300;
+            color: $white;
+        }
+        .form_description{
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: $font-weight-400;
+            color: $light-gray;
+            max-width: 345px;
+        }
+    }
+    .form_wrapper{
+        @include flex-column;
+        
+        .input_wrapper{
+            @include flex-column;
+            row-gap: 15px;
+            margin-bottom: 30px;
+        }
+        .button_wrapper{
+            margin-top: 20px;
+            height: 70px;
+        }
+        .error_message{
+            color: red;
+        }
+    }
+}

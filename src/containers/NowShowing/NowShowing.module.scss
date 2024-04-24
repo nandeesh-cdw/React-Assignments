@@ -1,0 +1,37 @@
+@import '../../styles/global.scss';
+
+.container {
+    @include flex-column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $background-page-color;
+    padding:40px 0px;
+    .video_container{
+        @include flex-column;
+        row-gap: 43px;
+        max-width: 1200px;
+        .title{
+            font-size: 24px;
+            font-weight: $font-weight-600;
+            color: $light-blue;
+        }
+        .video_wrapper{
+            @include flex-column;
+            row-gap: 20px;
+            .video_title_wrapper{
+                .video_title{
+                    font-size: 48px;
+                    font-weight: $font-weight-400;
+                    color: $white;
+                }
+            }
+            .movie_description_wrapper{
+                .movie_description{
+                    font-size: 26px;
+                    font-weight: $font-weight-400;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

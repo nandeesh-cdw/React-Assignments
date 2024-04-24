@@ -1,0 +1,71 @@
+@import '../../styles/global.scss';
+
+.movie_description_wrapper{
+    @include flex-column;
+    // padding:70px 0px;
+    row-gap: 30px;
+    .title_wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title{
+            font-size: 54px;
+            color: $white;
+            font-weight: 400;
+            width: 80%;
+        }
+        .like_wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border:1px solid $white;
+            height: 45px;
+            width: 45px;
+        }
+    }
+    .like_count_wrapper{
+        .like_count{
+            font-size: 18px;
+            color: $dull-yellow;
+        }
+    }
+    .image_wrapper{
+        .image{
+            width: 180px;
+            height: 220px;
+        }
+    }
+    .description_wrapper{
+        .description{
+            font-size: 16px;
+            line-height: 25px;
+            color: $white;
+        }
+    }
+    .actors_wrapper{
+        .actor_title{
+            font-size: 23px;
+            letter-spacing: 2px;
+            color: $white;
+            font-weight: $font-weight-500;
+        }
+        .actors_list{
+            @include flex-column;
+            list-style-type: none;
+            padding: 20px 0px;
+            row-gap: 5px;
+            .actor{
+                font-size: 17px;
+                color: $white;
+            }
+        }
+    }
+    .advertisment_wrapper{
+        .advertisement_title{
+            font-size: 20px;
+            font-weight: $font-weight-500;
+            color: $light-blue;
+        }
+    }
+}

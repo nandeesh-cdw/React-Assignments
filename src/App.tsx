@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home/Home';
+import Header from './components/Header/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Movies from './pages/Movies/Movies';
+import Login from './pages/Login/Login';
+import { AuthProvider } from './services/AuthContext';
+import PrivateRoute from './components/HOC/PrivateRoute';
+import NowShowing from './containers/NowShowing/NowShowing';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+      <AuthProvider>
+        <Header/>
+        <Routes>
+          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/allMovies' element={<Movies/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route element={<PrivateRoute/>}>
+            <Route path='/nowShowing' element={<NowShowing/>}/>
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+    </>
   );
 }
 

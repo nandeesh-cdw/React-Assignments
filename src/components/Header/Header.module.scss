@@ -1,0 +1,26 @@
+@import '../../styles/global.scss';
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    width: 100%;
+    background-color: $black;
+    padding: 25px 50px;
+
+    .logo_wrapper{
+        .logo{
+            width: 200px;
+            height: 30px;
+        }
+    }
+
+    .nav_wrapper {
+        display: flex;
+        gap:55px;
+    }
+
+    .user_wrapper {
+
+    }
+}

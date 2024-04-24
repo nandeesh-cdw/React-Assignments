@@ -1,0 +1,18 @@
+@import '../../styles/global.scss';
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 65px 80px;
+    background-color: $background-page-color;
+    min-height: 100vh;
+    .movies_container{
+        width: 60%;
+    }
+
+    .movie_description_container{
+        width: 38%;
+        height: 100%;
+        padding: 70px 0px;
+    }
+}
