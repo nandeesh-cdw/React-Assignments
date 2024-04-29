@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
     <div className={styles.container}>
-      <Banner/>
+      <Banner isHomePage={true}/>
       <ErrorBoundary fallback={<LotteryFallback/>}>
         <Lottery/>
       </ErrorBoundary>
