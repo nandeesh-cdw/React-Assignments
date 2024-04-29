@@ -1,0 +1,25 @@
+@import '../../styles/global.scss';
+
+.languages_container{
+    @include flex-column;
+    row-gap: 10px;
+    margin-top: 150px;
+    .title_wrapper{
+        .title{
+            font-weight: $font-weight-600;
+            color: $white;
+        }
+    }
+    .languages_wrapper{
+        display: flex;
+        list-style-type: none;
+        column-gap: 10px;
+        .language{
+            font-size: 20px;
+            border: 1px solid $light-blue;
+            color: $light-blue;
+            padding: 10px 20px;
+            font-weight: $font-weight-600;
+        }
+    }
+}

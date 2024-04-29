@@ -16,6 +16,8 @@
         gap:40px;
         max-height: 710px;
         overflow: auto;
+        scroll-behavior: smooth;
+        list-style-type: none;
     }
     .button_wrapper{
         width: 240px;

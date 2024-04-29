@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './MovieCard.module.scss'
 import Poster from '../Poster/Poster'
 import Like from '../Like/Like'
-function MovieCard(props:any) {
-    const [liked, setLiked] = useState(false);
+import { MovieCardProps } from '../../models/models'
+import APP_MESSAGES from '../../constants/APP_MESSAGES'
+function MovieCard(props:MovieCardProps) {
   return (
     <div className={styles.movie_card_wrapper}>
         <div className={styles.image_wrapper} onClick={() => props.onMovieClick(props.movie)}>
@@ -15,13 +16,12 @@ function MovieCard(props:any) {
                 {props?.movie?.name}
                 </h3>
                 <h4 className={styles.like_counts}>
-                    {props?.movie?.likes} Likes 
+                    {props?.movie?.likes} {APP_MESSAGES.MOVIE_CARD.LIKES} 
                 </h4>
             </div>
             <div className={styles.like_wrapper}>
                 <Like onclick={() => {
-                    setLiked(prevLiked => !prevLiked);
-                    props.onLiked(props.movie,liked);
+                    props.onLiked(props.movie);
                     }}/>
             </div>
         </div>
@@ -29,4 +29,4 @@ function MovieCard(props:any) {
   )
 }
 
-export default MovieCard
+export default React.memo(MovieCard)

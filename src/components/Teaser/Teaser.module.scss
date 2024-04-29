@@ -1,0 +1,15 @@
+@import '../../styles/global.scss';
+
+.teaser_wrapper{
+    @include flex-column;
+    row-gap: 10px;
+    min-height: 310px;
+    .video_wrapper{
+    }
+    .title_wrapper{ 
+        .title{
+            color: $white;
+            font-weight: $font-weight-400;
+        }
+    }
+}

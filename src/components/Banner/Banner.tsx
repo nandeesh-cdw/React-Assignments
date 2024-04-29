@@ -3,7 +3,7 @@ import styles from './Banner.module.scss'
 function Banner(props) {
   return (
     <div className={styles.banner_container}>
-        {props?.children}
+        {props.children}
     </div>
   )
 }

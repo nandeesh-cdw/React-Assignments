@@ -1,20 +1,17 @@
 import React, { createContext, useState } from "react";
 
-// Create the AuthContext
 interface AuthContextType {
   isLoggedIn: boolean;
-  login: (username: string, password: string) => boolean | void; // Specify return type
+  login: (username: string, password: string) => boolean | void;
   logout: () => void;
 }
 
-// Create the AuthContext
 const AuthContext = React.createContext<AuthContextType>({
   isLoggedIn: false,
   login: () => {},
   logout: () => {}
 });
 const number =10 
-// Create the AuthProvider component
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -37,5 +34,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Export the useAuth hook
 export const useAuth = () => React.useContext(AuthContext);

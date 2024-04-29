@@ -1,1 +1,16 @@
 @import '../../styles/global.scss';
+
+.hide_element{
+    display: none;
+}
+.poster_wrapper_large{
+    height: 700px;
+}
+.advertisement_wrapper{
+    // margin-top: 15px;
+    .advertisement_title{
+        font-size: 20px;
+        font-weight: $font-weight-500;
+        color: $light-blue;
+    }
+}

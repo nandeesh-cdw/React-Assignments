@@ -1,25 +1,32 @@
 import React from 'react'
 import styles from './Header.module.scss'
 import logo from '../../assets/logo.png'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Links from '../Links/Links'
 import { useAuth } from '../../services/AuthContext'
 import Button from '../Button/Button'
-function Header() {
+import { APP_CONSTANTS } from '../../constants/APP_CONSTANTS'
+import APP_MESSAGES from '../../constants/APP_MESSAGES'
+
+function Header(props) {
   const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
+  const navigateHome = () => { 
+    navigate(APP_CONSTANTS.ROUTES.HOME);
+  }
   return (
     <header>
         <div className={styles.logo_wrapper}>
-            <img src={logo} className={styles.logo}/>
+            <img src={logo} className={styles.logo} onClick={navigateHome}/>
         </div>
         <div className={styles.nav_wrapper}>
-          <Links path='/' label='HOME'/>
-          <Links path='/allMovies' label="ALL MOVIES"/>
-          {isLoggedIn && (<Links path='/nowshowing' label='NOW SHOWING' isNowShowing={true}/>)}
+          <Links path={APP_CONSTANTS.ROUTES.HOME} label={APP_MESSAGES.HEADER_MESSAGES.HOME}/>
+          <Links path={APP_CONSTANTS.ROUTES.ALLMOVIES} label={APP_MESSAGES.HEADER_MESSAGES.ALLMOVIES}/>
+          {isLoggedIn && (<Links path={APP_CONSTANTS.ROUTES.NOWSHOWING} label={APP_MESSAGES.HEADER_MESSAGES.NOWSHOWING}/>)}
         </div>
         <div className={styles.user_wrapper}>
-          { !isLoggedIn && (<Links path='/login' label="LOGIN"/>)}
-          { isLoggedIn && (<Button label="Hi Nijin | Logout" onClick={logout} isUser={true}/>)}
+          { !isLoggedIn && (<Links path={APP_CONSTANTS.ROUTES.LOGIN} label={APP_MESSAGES.HEADER_MESSAGES.LOGIN}/>)}
+          { isLoggedIn && (<Button label={APP_MESSAGES.HEADER_MESSAGES.LOGGEDIN} onClick={logout} isUser={true}/>)}
         </div>
     </header>
   )

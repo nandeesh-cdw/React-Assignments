@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './NowShowing.module.scss'
 import APP_MESSAGES from '../../constants/APP_MESSAGES'
 import Video from '../../components/Video/Video'
 import poster from '../../assets/sindel-background.png'
+import withAdvertisement from '../../components/withAdvertisment/withAdvertisement'
 function NowShowing() {
+    // const EnhancedVideo = withAdvertisement(Video, 5, 5, false, true, true);
   return (
     <div className={styles.container}>
         <div className={styles.video_container}>

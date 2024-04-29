@@ -3,7 +3,7 @@ import axios from 'axios';
 export const movieService = {
   getShortTeasers: async () => {
       try {
-          const response = await axios.get('https://mocki.io/v1/2e861907-77b4-4cd4-8043-041c70475fd6')
+          const response = await axios.get('https://nijin-server.vercel.app/api/cineflex/short-teasers')
           return response.data;
       } catch (error) {
         console.error('Error fetching users:', error);

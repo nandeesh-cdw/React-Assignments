@@ -6,24 +6,26 @@ import Button from '../Button/Button';
 import styles from './LoginForm.module.scss'
 import { useAuth } from '../../services/AuthContext';
 import { useNavigate } from 'react-router-dom';
-function LoginForm() {
+import { APP_CONSTANTS } from '../../constants/APP_CONSTANTS';
+function LoginForm(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const { isLoggedIn, login, logout } = useAuth();
     const Navigate = useNavigate();
-    // Function to handle form submission
+
+
     const handleSubmit = (event) => {
       event.preventDefault();
       if(username === '' ||  password === '') {
-        setErrorMessage("Please enter both username and password");
+        setErrorMessage(APP_MESSAGES.ERROR_MESSAGES.LOGIN_FORM.REQUIRED);
         return
       }
       const isSuccess = login(username,password);
       setErrorMessage("");
       setUsername("");
       setPassword("");
-      isSuccess ? Navigate('/home' ,{replace: true}) : window.alert("wrong credentials");
+      isSuccess ? Navigate(APP_CONSTANTS.ROUTES.HOME ,{replace: true}) : window.alert(APP_MESSAGES.ERROR_MESSAGES.LOGIN_FORM.WRONG_CREDS);
     };
   
     return (
@@ -36,7 +38,7 @@ function LoginForm() {
           <div className={styles.input_wrapper}>
               <Label label={APP_MESSAGES.LOGIN_PAGE.EMAIL}/>
               <Input
-                type="text"
+                type={APP_CONSTANTS.INPUT_TYPE.TEXT}
                 value={username}
                 onChange={(name) => setUsername(name)}
                 isLogin = {true}
@@ -45,7 +47,7 @@ function LoginForm() {
           <div className={styles.input_wrapper}>
             <Label label={APP_MESSAGES.LOGIN_PAGE.PASSWORD}/>
               <Input
-                type="password"
+                type={APP_CONSTANTS.INPUT_TYPE.PASSWORD}
                 value={password}
                 onChange={(password) => setPassword(password)}
                 isLogin = {true}

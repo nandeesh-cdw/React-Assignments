@@ -1,0 +1,51 @@
+@import '../../styles/global.scss';
+
+.container{
+    @include flex-column;
+    .title_section{
+        @include flex-column;
+        margin-bottom: 20px;
+        .title_wrapper{
+            .title{
+                font-size: 40px;
+                font-weight: $font-weight-400;
+                color: $white;
+            }
+        }
+        .sign_in_wrapper{
+            .sign_in_description{
+                color: $white;
+            }
+            .sign_in{
+                color: $light-blue;
+            }
+        }
+    }
+
+    .trailer_card_wrapper{
+        display: flex;
+        column-gap: 40px;
+        .description_container{
+            @include flex-column;
+            justify-content: space-between;
+            .title_wrapper{
+                .title{
+                    font-size: 30px;
+                    color: $white;
+                }
+            }
+            .description_wrapper{
+                max-height: 115px;
+                .description{
+                    font-size: 16px;
+                    font-weight: $font-weight-400;
+                    color: $white
+                }
+            }
+            .button_wrapper{
+                height: 60px;
+                width: 220px;
+            }
+        }
+    }
+}

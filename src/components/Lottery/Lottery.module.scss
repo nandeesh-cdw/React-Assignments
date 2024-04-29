@@ -17,4 +17,13 @@
         font-weight: $font-weight-600;
         color: $white;
     }
+    .is_error{
+        outline: 2px solid red;
+        box-shadow: 1px 0px 20px red;
+    }
+    .winner{
+        font-size: 46px;
+        font-weight: $font-weight-300;
+        color: $white;
+    }
 }

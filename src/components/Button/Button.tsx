@@ -1,7 +1,8 @@
 import classNames from 'classnames'
 import React from 'react'
 import styles from './Button.module.scss'
-function Button(props:any) {
+import { ButtonProps } from '../../models/models'
+function Button(props:ButtonProps) {
     const classnames = classNames(styles.yellow_btn,{
         [styles.user_btn]: props.isUser,
         [styles.lottery_btn]: props.isLottery

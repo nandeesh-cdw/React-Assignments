@@ -8,8 +8,14 @@
 }
 .play_pause {
     cursor: pointer;
-    position: absolute;
-    width: 170px;
-    top: 55%;
+    position: relative;
+    // width: 10%;
     left: 50%;
+}
+.shortTeasers{
+    width: 450px;
+    height: 250px;
+}
+.video_wrapper{
+    // position: relative;
 }

@@ -1,0 +1,15 @@
+@import '../../styles/global.scss';
+
+
+.lottery_container {
+    background-color: $mixed-yellow;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .error_message{
+        font-size: 46px;
+        font-weight: $font-weight-300;
+        color: $white;
+    }
+}
