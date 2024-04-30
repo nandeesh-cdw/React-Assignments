@@ -12,9 +12,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/categories/:categoryId' element={<Shopping/>}/>
-        <Route path='/:confirmOrder' element={<Home/>}/>
+        <Route path='/confirmOrder' element={<Home/>}/>
       </Routes>
-      <Footer/>
     </BrowserRouter>
   );
 }

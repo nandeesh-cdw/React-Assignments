@@ -17,8 +17,9 @@
             overflow: scroll;
             flex-wrap: wrap;
             margin: auto;
+            list-style-type: none;
             padding: $spacing-2 + $spacing-0-75 + $spacing-0-1 44px;
-            column-gap: calc($spacing-2 + $spacing-0-5);
+            column-gap: calc($spacing-2 + $spacing-0-75);
             row-gap: calc($spacing-2 + $spacing-0-75 + $spacing-0-1);
         }
     }
@@ -26,7 +27,7 @@
     .cart_section {
         @include flex-column;
         height: 100%;
-        width: 31.5%;
+        width: 32.5%;
         background-color: #f7f7f7;
 
     }

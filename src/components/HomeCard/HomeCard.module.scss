@@ -18,8 +18,9 @@
     }
 
     .category_description {
-        font-size: $spacing-1;
-        line-height: $spacing-1 + $spacing-0-75 + $spacing-0-1;
+        font-size: 15px;
+        line-height: 1.625rem;
         color: $light-grey;
+        font-weight: $font-weight-400;
     }
 }

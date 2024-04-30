@@ -36,9 +36,57 @@ export const formatPriceToINR = (price: number) => {
 };
 
 export const getOrderedItems = () => {
-    const orderedItems = JSON.parse(localStorage.getItem('orderItems') || '[]') as any[];
+    const orderedItems = JSON.parse(localStorage.getItem('userCart') || '[]') as any[];
+    setTimeout(() => {
+        localStorage.removeItem('userCart');
+    },1000)
     return orderedItems;
 }
 export const removeOrderItems = () => {
     localStorage.removeItem('orderItems');
+}
+export const getCartItems = () => {
+    return JSON.parse(localStorage.getItem('userCart') || '[]');
+}
+
+export const getWishlistItems = () => {
+    return JSON.parse(localStorage.getItem('userWishlist') || '[]');
+}
+
+export const decrementCartItem= (product) => {
+    const userCart = getCartItems();
+    const itemIndex = userCart.findIndex(item => item.id === product.id);
+    
+    const updatedCart = itemIndex === -1
+        ? [...userCart, { ...product, quantity: 1 }]
+        : userCart.map((item, i) => {
+            if (i === itemIndex) {
+                return item.quantity - 1 > 0 ? { ...item, quantity: item.quantity - 1 } : null;
+            } else {
+                return item;
+            }
+        }).filter(item => item !== null); 
+    
+    localStorage.setItem('userCart', JSON.stringify(updatedCart));
+    return updatedCart;
+}
+
+export const incrementCartItem= (product) => {
+    const userCart = JSON.parse(localStorage.getItem('userCart') || '[]') as any[];
+    const itemIndex = userCart.findIndex(item => item.id === product.id)
+    const updatedCart = itemIndex === -1
+        ? [...userCart, { ...product, quantity: 1 }]
+        : userCart.map((item, i) => {
+            if (i === itemIndex) {
+                if (item.quantity > 0) {
+                    return { ...item, quantity: item.quantity + 1 };
+                } else {
+                    return null; // Remove the item by returning null
+                }
+            } else {
+                return item;
+            }   
+        })
+        localStorage.setItem('userCart', JSON.stringify(updatedCart));
+        return (updatedCart);
 }

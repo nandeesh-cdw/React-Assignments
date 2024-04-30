@@ -16,14 +16,19 @@ ul{
         border-radius: 0 8px 8px 8px;
     }
 
-    //details 
     .furniture_details {
         display: flex;
         justify-content: space-between;
-
+        .furniture_name{
+            max-height: 24px;
+            overflow: hidden;
+            max-width: 300px;
+            text-overflow: ellipsis;
+        }
         .furniture_name,
         .furniture_price {
             font-weight: 600;
+
         }
     }
 

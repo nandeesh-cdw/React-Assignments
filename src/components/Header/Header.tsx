@@ -22,9 +22,9 @@ function Header() {
   return (
     <header>
         <Link className={styles.logo} to='/' replace={true}> {HEADER_MESSAGES.title}</Link>
-        <div className={styles.nav_bar}>
-            {navLinks.map((navLink) => <Navlink label={navLink.label} path={navLink.path}/>)}
-        </div>
+        <ul className={styles.nav_bar}>
+            {navLinks.map((navLink,index) => <li key={index}><Navlink label={navLink.label} path={navLink.path}/></li>)}
+        </ul>
         <div className={styles.nav_bar_account_section}>
             <User username={HEADER_MESSAGES.user}/>
         </div>

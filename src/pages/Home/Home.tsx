@@ -3,18 +3,20 @@ import HomeCard from '../../components/HomeCard/HomeCard';
 import axios from 'axios';
 import styles from './Home.module.scss';
 import Spinner from '../../components/Spinner/Spinner';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import ConfirmOrder from '../../components/ConfirmOrder/ConfirmOrder';
 import { getOrderedItems } from '../../utils/utils';
 import { HOME_MESSAGES } from '../../constants/Messages';
+import Footer from '../../components/Footer/Footer';
 function Home() {
   const navigate = useNavigate();
   const [categoryData, setCategoryData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [replaceUrl , setReplaceUrl] = useState(false);
-  const { confirmOrder } = useParams();
-  let orderItems;
+  const location = useLocation();
+  const isConfirmOrder = location.pathname === '/confirmOrder' ? true : false;
   useEffect(() => {
+
     try {
       axios.get('https://jsonmockserver.vercel.app/api/shopping/furniture/categories').then(response => {
         setCategoryData(response.data);
@@ -27,7 +29,7 @@ function Home() {
   }, []);
 
   const onShop = (category) =>{
-    if (confirmOrder) {
+    if (isConfirmOrder) {
       navigate(`/categories/${category.id}`, { replace: true })
     } else {
       navigate(`/categories/${category.id}`)
@@ -36,7 +38,7 @@ function Home() {
   
   return (
     <>
-      {confirmOrder && <ConfirmOrder orderedItems={getOrderedItems()}/>}
+      {isConfirmOrder && <ConfirmOrder orderedItems={getOrderedItems()}/>}
       <div className={styles.container}>
         <div className={styles.title_wrapper}>
           <h1 className={styles.heading}>{HOME_MESSAGES.heading}</h1>
@@ -46,12 +48,13 @@ function Home() {
           { loading ? (
             <Spinner />
           ) : categoryData.length > 0 ? (
-            categoryData.map((category) => <HomeCard category={category} onShopNow={onShop}/>)
+            categoryData.map((category,index) => <HomeCard category={category} onShopNow={onShop} key={index}/>)
           ) : (
             <p> { HOME_MESSAGES.not_found }</p>
           )}
         </ul>
       </div>
+      <Footer/>
     </>
   );
 }

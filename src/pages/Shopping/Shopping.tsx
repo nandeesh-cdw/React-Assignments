@@ -5,10 +5,9 @@ import axios from 'axios';
 import Spinner from '../../components/Spinner/Spinner';
 import FurnitureCard from '../../components/FurnitureCard/FurnitureCard';
 import Basket from '../../components/Basket/Basket';
-import { addItemstoCart , addItemsToWishlist, getOrderedItems, removeWishlistItem } from '../../utils/utils'
+import { addItemstoCart , addItemsToWishlist, decrementCartItem, getCartItems, incrementCartItem, removeWishlistItem } from '../../utils/utils'
 import { Product } from '../../models/models';
 function Shopping() {
-    console.log("shopping rendered");
     const navigate = useNavigate();
     const { categoryId } = useParams();
     const [productData, setProductData] = useState([]);
@@ -28,7 +27,7 @@ function Shopping() {
             console.log(error);
             setLoading(false); 
         }
-        const storedCart = JSON.parse(localStorage.getItem('userCart') || '[]');
+        const storedCart = getCartItems()
         const storedWishlist = JSON.parse(localStorage.getItem('userWishlist') || '[]');
         setCartItems(storedCart);
         setWishlist(storedWishlist);
@@ -45,40 +44,11 @@ function Shopping() {
     }
 
     const onDecrement = (product: Product) => {
-        const userCart = JSON.parse(localStorage.getItem('userCart') || '[]') as any[];
-        const itemIndex = userCart.findIndex(item => item.id === product.id);
-    
-        const updatedCart = itemIndex === -1
-            ? [...userCart, { ...product, quantity: 1 }]
-            : userCart.map((item, i) => {
-                if (i === itemIndex) {
-                    return item.quantity - 1 > 0 ? { ...item, quantity: item.quantity - 1 } : null;
-                } else {
-                    return item;
-                }
-            }).filter(item => item !== null); 
-    
-        localStorage.setItem('userCart', JSON.stringify(updatedCart));
+        const updatedCart = decrementCartItem(product)
         setCartItems(updatedCart);
     }     
     const onIncrement = (product:Product) => {
-        const userCart = JSON.parse(localStorage.getItem('userCart') || '[]') as any[];
-        const itemIndex = userCart.findIndex(item => item.id === product.id)
-
-        const updatedCart = itemIndex === -1
-            ? [...userCart, { ...product, quantity: 1 }]
-        : userCart.map((item, i) => {
-            if (i === itemIndex) {
-                if (item.quantity > 0) {
-                    return { ...item, quantity: item.quantity + 1 };
-                } else {
-                    return null; // Remove the item by returning null
-                }
-            } else {
-                return item;
-            }   
-        })
-        localStorage.setItem('userCart', JSON.stringify(updatedCart));
+        const updatedCart = incrementCartItem(product)
         setCartItems(updatedCart);
     }
 
@@ -93,24 +63,22 @@ function Shopping() {
 
     const placeOrder = () => {
         const orderItems = cartItems;
-        localStorage.setItem('orderItems', JSON.stringify(orderItems));
-        localStorage.removeItem('userCart');
         navigate(`/confirmOrder`);
     }
   return (
         <div className={styles.container}>
             <div className={styles.catalog_section}>
-                <div className={styles.product_section}>
+                <ul className={styles.product_section}>
                     {
                         loading ? (
                             <Spinner/>
                         ) : (
-                            productData.map((product) => {
-                               return <FurnitureCard product={product} productType='product' onClickWishlist={addToWishlist} onAddToCart={addToCart}/>
+                            productData.map((product,index) => {
+                               return <li key={index}><FurnitureCard product={product} productType='product' onClickWishlist={addToWishlist} onAddToCart={addToCart}/></li>
                             })
                         )
                     }
-                </div>
+                </ul>
             </div>
             {
                 (cartItems.length > 0 || wishlist.length >0) && ( 

@@ -8,10 +8,14 @@
     text-decoration: none;
     height: 100%;
     align-items: center;
-    padding-bottom: 8px;
+    // padding-bottom: 8px;
 }
 
 .active_link {
     border-bottom: 8px solid black;
-    padding-bottom: 0px;
+    padding-top: 8px;
+}
+.links:hover{
+    border-bottom: 8px solid black;
+    padding-top: 8px;
 }

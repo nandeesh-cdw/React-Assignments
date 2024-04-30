@@ -62,13 +62,13 @@ function Basket(props:BasketProp) {
                 }   
             </div>
       </div>
-      <div className={styles.payment_section}>
+      { (props.cartItems.length > 0) && (<div className={styles.payment_section}>
             <div className={styles.price_details}>
                 <div className={styles.total}>{BASKING_MESSAGES.total_amount}</div>
                 <div className={styles.order_price}>{calculateTotalAmount()}</div>
             </div>
             <Button onClick={props.onPlaceOrder} label={BASKING_MESSAGES.place_order} isPlaceOrder={true}/> 
-      </div>
+      </div>)}
     </div>
   )
 }
