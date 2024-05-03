@@ -1,0 +1,16 @@
+@import '../../styles/global.scss';
+
+.container {
+    @include flex-column;
+    background-color: $light_gray;
+    width: 575px;
+    height: 100vh;
+    padding: 35px;
+    overflow: scroll;
+    .search_wrapper{
+
+    }
+    .blogs_wrapper{
+
+    }
+}

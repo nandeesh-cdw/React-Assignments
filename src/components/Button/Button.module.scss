@@ -1,0 +1,18 @@
+@import '../../styles/global.scss';
+
+button{
+    all: unset;
+    cursor: pointer;
+}
+.purple_button{
+
+}
+.cyan_button{
+
+}
+.transparent_Button{
+    font-family: $secondary_font;
+    font-size: 14px;
+    color: $black;
+    font-weight: $font-weight-500;
+}

@@ -1,0 +1,19 @@
+@import './fonts';
+@import './mixins';
+@import './colors';
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: $primary_font;
+}
+
+.dark_background {
+    background-color: $dark_mode !important;
+}
+.light_text{
+    color: $white !important;
+}
