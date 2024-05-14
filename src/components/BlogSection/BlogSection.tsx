@@ -1,15 +1,76 @@
-import React from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import styles from './BlogSection.module.scss'
 import BlogCard from '../BlogCard/BlogCard'
+import classNames from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
+import { Blog, RootState } from '../../models/models'
+import { blogActions } from '../../store/store'
+import Input from '../Input/Input'
+import Button from '../Button/Button'
+import Loader from '../Loader/Loader'
 function BlogSection() {
-  return (
-    <div className={styles.container}>
-        <div className={styles.search_wrapper}>
+  const [searchText, setSearchText] = useState("");
+  const dispatch = useDispatch();
+  const filterState = useSelector((state: RootState) => state.navbar.filterState);
+  const darkMode = useSelector((state: RootState) => state.navbar.darkMode);
+  const blogData = useSelector((state: RootState) => state.blog.blogData);
+  const showLoader = useSelector((state: RootState) => state.blog.showLoader);
+  const currentBlog: Blog = useSelector((state: RootState) => state.blog.currentBlog);
 
-        </div>
-        <div className={styles.blogs_wrapper}>
-          <BlogCard title={"How to Time Travel"} tag={"International"} description={`There is an old saying that life is a journey. In fact, life is many journeys. The more of them you take, the longer it will seem. I thought about this. Then I thought about my childhood. It turns out that I rode the bus to school nearly 200 days a year for more than 10 years. That’s 2,000 days. I don’t remember most of those days. They blur together. But when I was a child, once a year, we would take a family vacation. I remember every single one of these. The first one was to St Louis. It was the first time I was on an airplane. My sister was maybe 2 or 3 years old. I remember her in her little stroller. Each year we took a trip. Dallas. Baltimore. Chicago. Seattle. When I look back on my life and the experiences I have had, I think back to these journeys. I remember every one of them. They are vivid life experiences that I shared with the people I care about. My life is longer because of the journeys I have taken. When I am on my death bed, I want to look back at my life, and have all these vivid memories. I want them to be full and different every single day.","photo`}/>
-        </div>
+  const filteredBlogData = useMemo(() => {
+    let filteredData = blogData;
+    const allFiltersOff = !filterState.isRegional && !filterState.isNational && !filterState.isInternational;
+    if (allFiltersOff && searchText.length < 3) {
+      return filteredData;
+    }
+    if (!allFiltersOff) {
+      if (!filterState.isRegional) {
+        filteredData = filteredData.filter(blog => !blog.type.includes('Regional'));
+      }
+      if (!filterState.isNational) {
+        filteredData = filteredData.filter(blog => !blog.type.includes('National'));
+      }
+      if (!filterState.isInternational) {
+        filteredData = filteredData.filter(blog => !blog.type.includes('International'));
+      }
+    }
+
+    if (searchText.length >= 3) {
+      filteredData = filteredData.filter(blog =>
+        blog.title.toLowerCase().includes(searchText.toLowerCase()) ||
+        blog.type.toLowerCase().includes(searchText.toLowerCase())
+      );
+    }
+
+    return filteredData;
+  }, [blogData, filterState, searchText]);
+
+
+  const containerStyle = classNames(styles.container, {
+    [styles.black_mode]: darkMode
+  })
+  const onCardSelected = useCallback((blog) => {
+    dispatch(blogActions.currentSelectedBlog(blog));
+  }, [dispatch]);
+
+  const onSearchInputChange = (value) => {
+    setSearchText(value)
+  }
+  const onButtonClick = (event) => {
+    event.stopPropagation();
+    dispatch(blogActions.toggleNewBlog());
+  }
+
+  return (
+    <div className={containerStyle}>
+      <div className={styles.search_wrapper}>
+        <Input type='text' placeholder='' onChange={onSearchInputChange} value={searchText} />
+        <Button label="New" onClick={onButtonClick} purpleButtonBig />
+      </div>
+      <ul className={styles.blogs_wrapper}>
+        {showLoader && <Loader/> }
+        {!showLoader && filteredBlogData.map((blog: any, index) => <li key={index} onClick={() => onCardSelected(blog)}> <BlogCard title={blog.title} tag={blog.tag} description={blog.details} type={blog.type}/> </li>)}
+      </ul>
     </div>
   )
 }

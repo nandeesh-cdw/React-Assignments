@@ -1,0 +1,14 @@
+@import '../../styles/global.scss';
+
+.card_wrapper{
+    @include flex-column;
+    height: 200px;
+    width: 150px;
+
+    .name_wrapper{
+        margin-top: 5px;
+        .name{
+            
+        }
+    }
+}

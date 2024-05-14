@@ -4,6 +4,7 @@
     @include flex-column;
     background-color: $light_gray;
     width: 575px;
+    // width: 33.3%;
     height: 100vh;
     padding: 35px;
     overflow: scroll;
@@ -11,6 +12,8 @@
 
     }
     .blogs_wrapper{
-
+        @include flex-column;
+        row-gap: 15px;
+        list-style-type: none;
     }
 }

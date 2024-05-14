@@ -9,10 +9,11 @@ function Button(props:ButtonProps) {
         [styles.purple_button]:props.purpleButton,
         [styles.cyan_button]:props.cyanButton,
         [styles.transparent_Button]:props.transparentButton,
-        [styles.light_text]:(props.transparentButton && dark_mode)
+        [styles.light_text]:(props.transparentButton && dark_mode),
+        [styles.purple_button_big]:props.purpleButtonBig,
     })
   return (
-    <button className={buttonStyles} onClick={()=>props.onClick(props.id)}>
+    <button className={buttonStyles} onClick={(event)=>props.onClick(event,props.id)}>
         {props.label}
     </button>
   )

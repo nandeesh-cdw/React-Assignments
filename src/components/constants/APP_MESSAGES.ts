@@ -10,5 +10,10 @@ export const APP_MESSAGES = {
             NATIONAL:"National Blogs",
             INTERNATIONAL:"International Blogs",
         }
+    },
+    BLOG:{
+        TITLE:"Add a New Blog",
+        BLOG_TITLE_PLACEHOLDER:"Name your blog",
+        BLOG_DETAILS_PLACEHOLDER:"Write Content Here..."
     }
 }

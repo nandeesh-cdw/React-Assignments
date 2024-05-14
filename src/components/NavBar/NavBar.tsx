@@ -6,18 +6,22 @@ import Filter from '../Filter/Filter';
 import { navbarActions } from '../../store/store';
 import Button from '../Button/Button';
 import { APP_MESSAGES } from '../constants/APP_MESSAGES';
+
 function NavBar() {
   const navBarState = useSelector((state: RootState) => state.navbar)
   const dark_mode = useSelector((state: RootState) => state.navbar.darkMode)
-  const switchThemeButtonLabel = dark_mode ? APP_MESSAGES.NAVBAR.SWITCH_DARK_MODE : APP_MESSAGES.NAVBAR.SWITCH_LIGHT_MODE;
+  const switchThemeButtonLabel = dark_mode ? APP_MESSAGES.NAVBAR.SWITCH_LIGHT_MODE: APP_MESSAGES.NAVBAR.SWITCH_DARK_MODE;
   const dispatch = useDispatch();
-  // dispatch(navbarActions.toggleDarkMode()
+
   const handleThemeChange = () => {
     dispatch(navbarActions.toggleDarkMode());
   }
-  const handleViewMembers = () => {
+
+  const handleViewMembers = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation(); // Stop event propagation
     dispatch(navbarActions.toggleMembers());
   }
+
   return (
     <div className={`${styles.container} ${navBarState.darkMode ? styles.dark_mode : ""}`}>
       <div className={styles.title_wrapper}>
@@ -33,4 +37,5 @@ function NavBar() {
     </div>
   )
 }
+
 export default NavBar

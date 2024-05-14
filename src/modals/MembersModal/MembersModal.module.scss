@@ -1,0 +1,30 @@
+@import '../../styles/global.scss';
+
+
+.container {
+    @include flex-column;
+    animation: appear 0.5s ease-in-out 0s 1 forwards;
+    height: 100%;
+    width: 600px;
+    background-color: $white;
+    padding: 80px 50px;
+    row-gap: 35px;
+    .members_title{
+
+        .title{
+            font-size: 20px;
+            font-weight: $font-weight-500;
+        }
+    }
+    .members_wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        column-gap: 25px;
+        row-gap: 30px;
+        list-style-type: none;
+    }
+}
+.fade {
+    animation: disappear 0.5s ease-in-out 0s 1 forwards;
+}

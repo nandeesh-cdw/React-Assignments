@@ -1,0 +1,54 @@
+@import "../../styles/global.scss";
+
+.container {
+  background-color: $white;
+  width: 885px;
+  height: 100vh;
+  padding: 50px 60px;
+  .blog_description_wrapper {
+    @include flex-column;
+    width: 745px;
+    .image_wrapper {
+    }
+    .title_wrapper {
+      margin-top: 25px;
+      .title {
+        font-size: 32px;
+        font-weight: $font-weight-700;
+        resize: none;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        height: 35px;
+        width: 100%;
+        overflow: auto;
+      }
+    }
+    .description_wrapper {
+      margin-top: 15px;
+      .description {
+        background-color: transparent;
+        border: none;
+        font-family: $secondary_font;
+        font-weight: $font-weight-400;
+        font-size: 18px;
+        line-height: 30px;
+        width: 100%;
+        min-height: 300px;
+        overflow: auto;
+        resize: none;
+        outline: none;
+      }
+      .description:focus {
+        border: none;
+      }
+    }
+  }
+  .button_wrapper {
+    margin-top: 15px;
+    display: flex;
+    // flex-direction: row-reverse;
+    justify-content: flex-end;
+    column-gap: 15px;
+  }
+}

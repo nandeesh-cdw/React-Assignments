@@ -1,5 +1,4 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
-import { stat } from 'fs'
 const initialNavbarState = {
     filterState:{
         isRegional:true,
@@ -10,6 +9,24 @@ const initialNavbarState = {
     darkMode:false,
 }
 
+const initialBlogsState = {
+    editable:false,
+    blogData:[{}],
+    currentBlog:{},
+    newBlog:false,
+    showLoader:true,
+    
+}
+
+const initialMembersState = {
+    membersData:[{}]
+}
+
+const initialModalState = {
+    toggleWarningModal:false,
+}
+
+
 const navBarSlice = createSlice({
     name:'navBar',
     initialState:initialNavbarState,
@@ -19,6 +36,7 @@ const navBarSlice = createSlice({
         },
         toggleMembers(state) {
             state.viewMembers = !state.viewMembers
+            console.log(state.viewMembers);
         },
         toggleFilter(state,action) {
             switch(action.payload) {
@@ -32,14 +50,64 @@ const navBarSlice = createSlice({
                     state.filterState.isInternational = !state.filterState.isInternational
                     break;
             }
-        } 
+        },
+        
     }
 })
 
+const blogSlice = createSlice({
+    name:'blogSlice',
+    initialState:initialBlogsState,
+    reducers:{
+        toggleEditMode(state,action) {
+            state.editable = action.payload;
+        },
+        setBlogData(state,action) {
+            state.blogData = action.payload;
+        },
+        currentSelectedBlog(state,action){
+            console.log("current blog" );
+            console.log(action.payload);
+            state.currentBlog = action.payload
+        },
+        toggleNewBlog(state) {
+            state.newBlog = !state.newBlog
+        },
+        setLoaderState(state,action) {
+            state.showLoader = action.payload;
+        }
+    }
+})
+
+const  memberSlice = createSlice({
+    name:'memberSlice',
+    initialState:initialMembersState,
+    reducers:{
+        setMembersData(state,action) {
+            state.membersData = action.payload;
+        }
+    }
+});
+
+const modalSlice = createSlice(
+    {
+        name:'modal',
+        initialState:initialModalState,
+        reducers:{
+            toggleWarningModal(state){
+                state.toggleWarningModal = !state.toggleWarningModal;
+            }
+        }
+    }
+    )
+
 const store = configureStore({
-    reducer: { navbar: navBarSlice.reducer}
+    reducer: { navbar: navBarSlice.reducer, blog: blogSlice.reducer , member:memberSlice.reducer, modal:modalSlice.reducer} 
 })
 
 export default store ;
 
+export const modalActions = modalSlice.actions;
+export const memberActions = memberSlice.actions;
 export const navbarActions = navBarSlice.actions;
+export const blogActions = blogSlice.actions;

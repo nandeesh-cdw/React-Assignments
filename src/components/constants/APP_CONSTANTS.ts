@@ -1,5 +1,4 @@
 export const APP_CONSTANTS = {
-
     CHECKBOXS:[
         {
             label:"Regional Blogs",
@@ -13,5 +12,6 @@ export const APP_CONSTANTS = {
             label:"International Blogs",
             id:"international"
         }
-    ]
+    ],
+    IMAGE_BASE_URL: 'https://jsonmockserver.vercel.app/'
 }

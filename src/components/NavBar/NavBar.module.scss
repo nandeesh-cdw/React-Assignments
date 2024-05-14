@@ -6,8 +6,10 @@
     height: 100vh;
     background-color: $white;
     width: 16.875rem;
+    // width: 15.5%;
     padding:45px 45px 55px;
     .title_wrapper{
+        cursor: pointer;
         text-align: center;
         .title{
             font-size: 28px;
