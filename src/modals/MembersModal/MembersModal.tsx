@@ -9,23 +9,23 @@ import { RootState } from '../../models/models';
 import classNames from 'classnames';
 
 function MembersModal() {
-  const [showModal, setShowModal] =useState(true);
-  const darkMode = useSelector((state:RootState) => state.navbar.darkMode)
-  const membersList = useSelector((state:RootState) => state.member.membersData)
+  const [showModal, setShowModal] = useState(true);
+  const darkMode = useSelector((state: RootState) => state.navbar.darkMode)
+  const membersList = useSelector((state: RootState) => state.member.membersData)
   const dispatch = useDispatch();
-  const containerRef = useClickOutside(()=>{
+  const containerRef = useClickOutside(() => {
     setShowModal(false);
-    setTimeout(()=>{
+    setTimeout(() => {
       dispatch(navbarActions.toggleMembers());
-    },500)
+    }, 500)
   })
-  
-  const containerStyle = classNames(styles.container,{
-    [styles.black_mode] : darkMode,
-    [styles.fade] : !showModal
+
+  const containerStyle = classNames(styles.container, {
+    [styles.black_mode]: darkMode,
+    [styles.fade]: !showModal
   })
-  const titleStyles = classNames(styles.title,{
-    [styles.light_text] :darkMode
+  const titleStyles = classNames(styles.title, {
+    [styles.light_text]: darkMode
   })
   return (
     <SideModalContainer>
@@ -37,7 +37,7 @@ function MembersModal() {
         </div>
         <div className={styles.members_wrapper} >
           <ul className={styles.members_wrapper}>
-            {membersList.map((member) => <li key={member.id}> <MemberCard member={member}/></li>)}
+            {membersList.map((member) => <li key={member.id}> <MemberCard member={member} /></li>)}
           </ul>
         </div>
       </div>

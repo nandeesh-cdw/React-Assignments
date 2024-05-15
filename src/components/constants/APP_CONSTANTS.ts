@@ -13,5 +13,9 @@ export const APP_CONSTANTS = {
             id:"international"
         }
     ],
-    IMAGE_BASE_URL: 'https://jsonmockserver.vercel.app/'
+    IMAGE_BASE_URL: 'https://jsonmockserver.vercel.app/',
+    INPUT_TYPES:{
+        TEXT:"text",
+        CHECKBOX:"checkbox"
+    }
 }

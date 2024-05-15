@@ -4,6 +4,7 @@ export interface RootState {
       isRegional: boolean;
       isNational: boolean;
       isInternational: boolean;
+      isLocal: boolean;
     };
     viewMembers: boolean;
     darkMode: boolean;
@@ -15,6 +16,7 @@ export interface RootState {
     currentBlog: Blog;
     newBlog: boolean;
     showLoader: boolean;
+    id: number;
   };
   member: {
     membersData: Array<Member>;
@@ -42,6 +44,7 @@ export interface BlogProps {
 }
 
 export interface Blog {
+  id?: number;
   title: string;
   photo: string;
   details: string;
@@ -80,4 +83,32 @@ export interface InputProps {
   blogTitle?: boolean;
   blogDetail?: boolean;
   search?: boolean;
+}
+
+export interface CheckBoxProps {
+  onChange: Function;
+  id: string;
+  isChecked: boolean;
+  label: string;
+}
+
+export interface ImageProps {
+  src: string;
+  isCardImage?: boolean;
+  isMemberImage?: boolean;
+  alt: string;
+}
+
+export interface MemberCardProps{
+  member:Member;
+}
+
+export interface TextareaProps{
+  editable: boolean;
+  blogTitle?: boolean;
+  blogDescription?: boolean;
+  blogDetail?: boolean;
+  onChange: Function;
+  value: string;
+  placeholder?: string;
 }

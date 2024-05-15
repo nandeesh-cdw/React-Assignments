@@ -1,47 +1,50 @@
-@import './fonts';
-@import './mixins';
-@import './colors';
+@import "./fonts";
+@import "./mixins";
+@import "./colors";
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    font-family: $primary_font;
+  font-family: $primary_font;
 }
 
 .dark_background {
-    background-color: $dark_mode !important;
+  background-color: $dark_mode !important;
 }
-.light_text{
-    color: $white !important;
+.light_text {
+  color: $white !important;
 }
-.black_mode{
-    background-color: $black !important;
+.black_mode {
+  background-color: $black !important;
 }
 .fade {
-    animation: disappear 0.5s ease-in-out 0s 1 forwards;
+  animation: disappear 0.5s ease-in-out 0s 1 forwards;
 }
-.dark_background_card{
-    background-color: $dark_mode !important;
+.dark_background_card {
+  background-color: $dark_mode !important;
 }
-.dark_background_card:hover{
-    background-color: $dark_mode_hover !important;
+.dark_background_card:hover {
+  background-color: $dark_mode_selected !important;
+}
+.input_dark {
+  background-color: $dark_mode_selected !important;
 }
 @keyframes appear {
-    from{
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 @keyframes disappear {
-    from{
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(100%);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }

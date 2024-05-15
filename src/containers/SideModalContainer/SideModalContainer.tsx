@@ -6,8 +6,8 @@ import { navbarActions } from '../../store/store';
 function SideModalContainer(props: any) {
 
   return (
-    <div  className={styles.container}>
-        {props.children}
+    <div className={styles.container}>
+      {props.children}
     </div>
   );
 }

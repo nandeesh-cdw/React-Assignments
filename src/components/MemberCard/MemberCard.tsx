@@ -2,33 +2,33 @@ import React from 'react'
 import styles from './MemberCard.module.scss'
 import Image from '../Image/Image'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../models/models'
+import { MemberCardProps, RootState } from '../../models/models'
 import classNames from 'classnames'
-function MemberCard(props) {
-    const darkMode = useSelector((state:RootState) => state.navbar.darkMode)
-    const nameStyles = classNames(styles.name,{
+function MemberCard(props: MemberCardProps) {
+    const darkMode = useSelector((state: RootState) => state.navbar.darkMode)
+    const nameStyles = classNames(styles.name, {
         [styles.light_text]: darkMode
     })
-    const locationStyles = classNames(styles.location,{
+    const locationStyles = classNames(styles.location, {
         [styles.grey_text]: darkMode
     })
-  return (
-    <div className={styles.card_wrapper}>
-        <div className={styles.image_wrapper}>
-            <Image  src={props.member.photo} alt='MemberImage' isMemberImage={true}></Image>
-        </div>
-        <div className={styles.name_wrapper}>
-            <div className={nameStyles}>
-               {props.member.name}
+    return (
+        <div className={styles.card_wrapper} data-testid="member-card">
+            <div className={styles.image_wrapper}>
+                <Image src={props.member.photo} alt={props.member.name} isMemberImage={true}></Image>
+            </div>
+            <div className={styles.name_wrapper}>
+                <div className={nameStyles}>
+                    {props.member.name}
+                </div>
+            </div>
+            <div className={styles.location_wrapper}>
+                <div className={locationStyles}>
+                    {props.member.address.city}
+                </div>
             </div>
         </div>
-        <div className={styles.location_wrapper}>
-            <div className={locationStyles}>
-                {props.member.address.city}
-            </div>
-        </div>
-    </div>
-  )
+    )
 }
 
 export default MemberCard

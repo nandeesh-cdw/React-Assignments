@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './NavBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../models/models';
@@ -10,7 +10,7 @@ import { APP_MESSAGES } from '../constants/APP_MESSAGES';
 function NavBar() {
   const navBarState = useSelector((state: RootState) => state.navbar)
   const dark_mode = useSelector((state: RootState) => state.navbar.darkMode)
-  const switchThemeButtonLabel = dark_mode ? APP_MESSAGES.NAVBAR.SWITCH_LIGHT_MODE: APP_MESSAGES.NAVBAR.SWITCH_DARK_MODE;
+  const switchThemeButtonLabel = dark_mode ? APP_MESSAGES.NAVBAR.SWITCH_LIGHT_MODE : APP_MESSAGES.NAVBAR.SWITCH_DARK_MODE;
   const dispatch = useDispatch();
 
   const handleThemeChange = () => {
@@ -18,7 +18,7 @@ function NavBar() {
   }
 
   const handleViewMembers = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation(); // Stop event propagation
+    event.stopPropagation();
     dispatch(navbarActions.toggleMembers());
   }
 

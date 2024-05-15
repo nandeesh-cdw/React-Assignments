@@ -1,34 +1,33 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
-.container{
-
+.container {
+  @include flex-column;
+  animation: appear 0.5s ease-in-out 0s 1 forwards;
+  width: 600px;
+  height: 100%;
+  background-color: $white;
+  padding: 80px 60px;
+  .title_wrapper {
+    .title {
+      font-size: 20px;
+      font-weight: $font-weight-500;
+    }
+  }
+  .blog_details {
     @include flex-column;
-    animation: appear 0.5s ease-in-out 0s 1 forwards;
-    width: 600px;
-    height: 100%;
-    background-color: $white;
-    padding: 80px 60px;
-    .title_wrapper{
-        .title{
-            font-size: 20px;
-            font-weight: $font-weight-500
-        }
+    .blog_title_wrapper {
+      margin-top: 40px;
     }
-    .blog_details{
-        @include flex-column;
-        .blog_title_wrapper{
-           margin-top: 40px;
-        }
-        .blog_details_wrapper{
-            margin-top: 30px;
-            height: 640px;
-        }
-        .button_wrapper{
-            display: flex;
-            justify-content: flex-end;
-        }
+    .blog_details_wrapper {
+      margin-top: 30px;
+      height: 640px;
     }
+    .button_wrapper {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 }
 .fade {
-    animation: disappear 0.5s ease-in-out 0s 1 forwards;
+  animation: disappear 0.5s ease-in-out 0s 1 forwards;
 }

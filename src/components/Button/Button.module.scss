@@ -1,38 +1,38 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
-button{
-    all: unset;
-    cursor: pointer;
+button {
+  all: unset;
+  cursor: pointer;
 }
-.purple_button{
-    font-family: $secondary_font;
-    font-weight: $font-weight-500;
-    font-size: 13px;
-    color: $white;
-    border-radius: 20px;
-    padding: 10px 25px;
-    background-color: $purple;
+.purple_button {
+  font-family: $secondary_font;
+  font-weight: $font-weight-500;
+  font-size: 13px;
+  color: $white;
+  border-radius: 20px;
+  padding: 10px 25px;
+  background-color: $purple;
 }
-.cyan_button{  
-    font-family: $secondary_font;
-    font-weight: $font-weight-500;
-    font-size: 13px;
-    border-radius: 20px;
-    padding: 10px 25px;
-    background-color: $cyan_blue;
+.cyan_button {
+  font-family: $secondary_font;
+  font-weight: $font-weight-500;
+  font-size: 13px;
+  border-radius: 20px;
+  padding: 10px 25px;
+  background-color: $cyan_blue;
 }
-.transparent_Button{
-    font-family: $secondary_font;
-    font-size: 14px;
-    color: $black;
-    font-weight: $font-weight-500;
+.transparent_Button {
+  font-family: $secondary_font;
+  font-size: 14px;
+  color: $black;
+  font-weight: $font-weight-500;
 }
-.purple_button_big{
-    font-family: $secondary_font;
-    font-weight: $font-weight-500;
-    font-size: 19px;
-    color: $white;
-    border-radius: 25px;
-    padding: 10px 50px;
-    background-color: $purple;
+.purple_button_big {
+  font-family: $secondary_font;
+  font-weight: $font-weight-500;
+  font-size: 19px;
+  color: $white;
+  border-radius: 25px;
+  padding: 10px 50px;
+  background-color: $purple;
 }
