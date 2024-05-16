@@ -1,0 +1,32 @@
+@import "../../styles/global.scss";
+
+.container {
+  background-color: $white;
+  width: 885px;
+  height: 100vh;
+  padding: 50px 60px;
+  .blog_description_wrapper {
+    @include flex-column;
+    width: 100%;
+    .image_wrapper {
+    }
+    .title_wrapper {
+      margin-top: 25px;
+    }
+    .description_wrapper {
+      margin-top: 15px;
+    }
+    .title_wrapper:focus,  .description_wrapper:focus{
+      border-bottom: 1px solid $dark_gray;
+    }
+  }
+  .button_wrapper {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 15px;
+  }
+}
+.error {
+  border-bottom: 1px solid red;
+}

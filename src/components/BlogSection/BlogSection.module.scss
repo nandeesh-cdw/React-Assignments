@@ -1,0 +1,37 @@
+@import "../../styles/global.scss";
+
+.container {
+  @include flex-column;
+  background-color: $light_gray;
+  width: 575px;
+  height: 990px;
+  // padding: 0 35px;
+  overflow: scroll;
+  .search_container {
+    display: flex;
+    position: sticky;
+    padding: 0 35px;
+    top: 0;
+    left: 0;
+    background-color: $light_gray;
+    justify-content: space-between;
+    align-items: center;
+    .search_wrapper{
+      display: flex;
+      align-items: center;
+      height: 115px;
+    }
+    
+  }
+  .blogs_wrapper {
+    padding: 0 35px;
+    @include flex-column;
+    row-gap: 15px;
+    list-style-type: none;
+    .placeholder_text {
+      margin-top: 50%;
+      align-self: center;
+      font-size: 26px;
+    }
+  }
+}

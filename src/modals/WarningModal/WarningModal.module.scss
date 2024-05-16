@@ -1,0 +1,19 @@
+@import "../../styles/global.scss";
+
+.container {
+  position: absolute;
+  top: 42%;
+  left: 42%;
+  width: 500px;
+  padding: 50px;
+  background-color: $white;
+  border-radius: 20px;
+  .modal_wrapper {
+    @include flex-column;
+    row-gap: 30px;
+    .button_wrapper {
+      display: flex;
+      gap:20px;
+    }
+  }
+}

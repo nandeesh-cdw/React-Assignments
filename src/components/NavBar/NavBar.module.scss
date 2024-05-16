@@ -1,0 +1,34 @@
+@import "../../styles//global.scss";
+
+.container {
+  @include flex-column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: $white;
+  width: 16.875rem;
+  // width: 15.5%;
+  padding: 45px 45px 55px;
+  .title_wrapper {
+    cursor: pointer;
+    text-align: center;
+    .title {
+      font-size: 28px;
+      color: $purple;
+      font-weight: $font-weight-400;
+    }
+    .title_text {
+      color: $black;
+      font-weight: $font-weight-500;
+    }
+  }
+  .button_wrapper {
+    @include flex-column;
+    gap: 10px;
+  }
+}
+.dark_mode {
+  background-color: $dark_mode;
+}
+.dark_text {
+  color: $white !important;
+}

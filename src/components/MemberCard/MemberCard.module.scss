@@ -1,0 +1,23 @@
+@import "../../styles/global.scss";
+
+.card_wrapper {
+  @include flex-column;
+  height: 200px;
+  width: 150px;
+
+  .name_wrapper {
+    margin-top: 5px;
+    .name {
+        font-family: $secondary_font;
+        color: $purple;
+        font-weight: $font-weight-500;
+    }
+  }
+  .location_wrapper{
+    .location{
+        font-family: $secondary_font;
+        font-size: 14px;
+        font-weight: $font-weight-500;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../styles/global.scss";
+
+.search {
+  width: 350px;
+  height: 50px;
+  font-size: 16px;
+  outline: none;
+  background-color: $dark_gray;
+  border-radius: 25px;
+  border: transparent;
+  padding: 0px 20px;
+}
+.blog_title {
+  font-family: $primary_font;
+  border: none;
+  background-color: transparent;
+  font-size: 28px;
+  width: 100%;
+  outline: none;
+}
+.blog_details {
+  font-family: $primary_font;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  width: 100%;
+  height: 640px;
+  padding: 0;
+}
+input::placeholder {
+  opacity: 0.5;
+}
+input:focus{
+  border-bottom: 1px solid $dark_gray;
+}
