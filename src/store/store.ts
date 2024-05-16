@@ -51,7 +51,7 @@ const navBarSlice = createSlice({
             !state.filterState.isInternational;
           break;
         case "local blogs":
-          state.filterState.isLocal = !state.filterState.isLocal
+          state.filterState.isLocal = !state.filterState.isLocal;
           break;
       }
     },
@@ -81,15 +81,17 @@ const blogSlice = createSlice({
       state.id = action.payload;
     },
     addNewBlog(state, action) {
-      state.blogData.push(action.payload);
+      state.blogData.unshift(action.payload);
+      state.currentBlog = action.payload;
     },
     updateBlog(state, action) {
       const updatedBlog = action.payload;
       const blogIndex = state.blogData.findIndex(
-        (blog:Blog) => blog.id === updatedBlog.id
+        (blog: Blog) => blog.id === updatedBlog.id
       );
       if (blogIndex !== -1) {
-        state.blogData[blogIndex] = updatedBlog;
+        state.blogData.splice(blogIndex, 1);
+        state.blogData.unshift(updatedBlog);
       }
     },
   },
@@ -101,7 +103,6 @@ const memberSlice = createSlice({
   reducers: {
     setMembersData(state, action) {
       state.membersData = action.payload;
-      
     },
   },
 });
@@ -110,9 +111,8 @@ const modalSlice = createSlice({
   name: "modal",
   initialState: initialModalState,
   reducers: {
-    showWarningModal(state,action) {
+    showWarningModal(state, action) {
       state.toggleWarningModal = action.payload;
-      console.log("modal open " +state.toggleWarningModal);
     },
   },
 });

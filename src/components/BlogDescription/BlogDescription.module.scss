@@ -7,16 +7,17 @@
   padding: 50px 60px;
   .blog_description_wrapper {
     @include flex-column;
-    width: 745px;
+    width: 100%;
     .image_wrapper {
     }
     .title_wrapper {
       margin-top: 25px;
-      padding: 0px 10px;
     }
     .description_wrapper {
       margin-top: 15px;
-      padding: 0px 10px;
+    }
+    .title_wrapper:focus,  .description_wrapper:focus{
+      border-bottom: 1px solid $dark_gray;
     }
   }
   .button_wrapper {
@@ -27,7 +28,5 @@
   }
 }
 .error {
-  outline: 1px solid red;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px red;
+  border-bottom: 1px solid red;
 }

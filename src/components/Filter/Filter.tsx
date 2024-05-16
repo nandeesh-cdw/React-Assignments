@@ -11,7 +11,6 @@ function Filter() {
   const dark_mode = useSelector((state: RootState) => state.navbar.darkMode);
   const dispatch = useDispatch();
   const handleFilterChange = (id) => {
-    console.log(id.toLowerCase())
     dispatch(navbarActions.toggleFilter(id.toLowerCase()));
   }
 
@@ -25,8 +24,8 @@ function Filter() {
       <ul className={styles.checkbox_wrapper}>
         <Checkbox label={APP_MESSAGES.NAVBAR.FILTERS.REGIONAL} id={APP_MESSAGES.NAVBAR.FILTERS.REGIONAL} onChange={handleFilterChange} isChecked={isRegional} />
         <Checkbox label={APP_MESSAGES.NAVBAR.FILTERS.NATIONAL} id={APP_MESSAGES.NAVBAR.FILTERS.NATIONAL} onChange={handleFilterChange} isChecked={isNational} />
-        <Checkbox label={APP_MESSAGES.NAVBAR.FILTERS.INTERNATIONAL} id={APP_MESSAGES.NAVBAR.FILTERS.INTERNATIONAL} onChange={handleFilterChange} isChecked={isInternational} />
         <Checkbox label={APP_MESSAGES.NAVBAR.FILTERS.LOCAL} id={APP_MESSAGES.NAVBAR.FILTERS.LOCAL} onChange={handleFilterChange} isChecked={isLocal} />
+        <Checkbox label={APP_MESSAGES.NAVBAR.FILTERS.INTERNATIONAL} id={APP_MESSAGES.NAVBAR.FILTERS.INTERNATIONAL} onChange={handleFilterChange} isChecked={isInternational} />
       </ul>
     </div>
   )

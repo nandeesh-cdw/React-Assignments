@@ -83,6 +83,7 @@ export interface InputProps {
   blogTitle?: boolean;
   blogDetail?: boolean;
   search?: boolean;
+  focus?: boolean;
 }
 
 export interface CheckBoxProps {
@@ -111,4 +112,5 @@ export interface TextareaProps{
   onChange: Function;
   value: string;
   placeholder?: string;
+  focus?: any;
 }

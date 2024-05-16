@@ -20,7 +20,6 @@ function BlogSection() {
   const showLoader = useSelector((state: RootState) => state.blog.showLoader);
   const editable = useSelector((state: RootState) => state.blog.editable);
   const currentBlog = useSelector((state: RootState) => state.blog.currentBlog);
-  const modalOpen = useSelector((state: RootState) => state.modal.toggleWarningModal);
 
   const filteredBlogData = useMemo(() => {
     let filteredData = blogData;
@@ -47,12 +46,16 @@ function BlogSection() {
   }, [blogData, filterState, searchText]);
 
 
-  const containerStyle = classNames(styles.container, {
+  const containerStyles = classNames(styles.container, {
     [styles.black_mode]: darkMode
   })
   const placeholderStyles = classNames(styles.placeholder_text, {
     [styles.light_text]: darkMode
   })
+  const searchContainerStyles= classNames(styles.search_container, {
+    [styles.black_mode]: darkMode
+  })
+
   const onCardSelected = useCallback((blog) => {
     if (!editable) {
       dispatch(blogActions.currentSelectedBlog(blog));
@@ -77,10 +80,15 @@ function BlogSection() {
   }
 
   return (
-    <div className={containerStyle}>
-      <div className={styles.search_wrapper}>
-        <Input type={APP_CONSTANTS.INPUT_TYPES.TEXT} placeholder={APP_MESSAGES.BLOG.SEARCH_TERM} onChange={onSearchInputChange} value={searchText} search />
-        <Button label={APP_MESSAGES.BUTTON.NEW} onClick={onButtonClick} purpleButtonBig />
+    <div className={containerStyles}>
+      <div className={searchContainerStyles}>
+        <div className={styles.search_wrapper}>
+          <Input type={APP_CONSTANTS.INPUT_TYPES.TEXT} placeholder={APP_MESSAGES.BLOG.SEARCH_TERM} onChange={onSearchInputChange} value={searchText} search />
+        </div>
+        <div className={styles.button_wrapper}>
+          <Button label={APP_MESSAGES.BUTTON.NEW} onClick={onButtonClick} purpleButtonBig />
+          </div>
+        
       </div>
       <ul className={styles.blogs_wrapper}>
         {showLoader && <Loader />}

@@ -31,3 +31,6 @@
 input::placeholder {
   opacity: 0.5;
 }
+input:focus{
+  border-bottom: 1px solid $dark_gray;
+}

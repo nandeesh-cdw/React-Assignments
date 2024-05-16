@@ -10,7 +10,7 @@ function MemberCard(props: MemberCardProps) {
         [styles.light_text]: darkMode
     })
     const locationStyles = classNames(styles.location, {
-        [styles.grey_text]: darkMode
+        [styles.light_text]: darkMode
     })
     return (
         <div className={styles.card_wrapper} data-testid="member-card">

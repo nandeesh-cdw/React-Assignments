@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { blogActions, modalActions } from '../../store/store';
 import { RootState } from '../../models/models';
 import SideModalContainer from '../../containers/SideModalContainer/SideModalContainer';
+import { APP_MESSAGES } from '../../components/constants/APP_MESSAGES';
 
 function WarningModal() {
     const editMode = useSelector((state: RootState) => state.blog.editable);
@@ -15,7 +16,6 @@ function WarningModal() {
     const onCancel = (event) => {
         event.stopPropagation();
         dispatch(modalActions.showWarningModal(false));
-        console.log(modalOpen);
     }
     const onExit = (event) => {
         event.stopPropagation();
@@ -26,18 +26,17 @@ function WarningModal() {
             dispatch(blogActions.toggleNewBlog());
         }
         dispatch(modalActions.showWarningModal(false));
-        console.log(modalOpen);
     }
     return (
         <SideModalContainer>
             <div className={styles.container}>
                 <div className={styles.modal_wrapper}>
-                    <div className="message_wrapper">
-                        <div className="message">Seems like you're editing, Do you want to exit?</div>
+                    <div className={styles.message_wrapper}>
+                        <div className={styles.message}>{APP_MESSAGES.MODAL.EDIT_WARNING}</div>
                     </div>
                     <div className={styles.button_wrapper}>
-                        <Button label='Cancel' onClick={onCancel} cyanButton />
-                        <Button label='Exit' onClick={onExit} purpleButton />
+                        <Button label={APP_MESSAGES.BUTTON.CANCEL} onClick={onCancel} cyanButton />
+                        <Button label={APP_MESSAGES.BUTTON.EXIT} onClick={onExit} purpleButton />
                     </div>
                 </div>
             </div>

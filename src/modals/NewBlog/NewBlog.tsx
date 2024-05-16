@@ -16,7 +16,7 @@ function NewBlog() {
   const [showModal, setShowModal] = useState(true);
   const [blogDetails, setBlogDetails] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
-
+  const [focus, setFocus] = useState(true);
   const editMode = useSelector((state: RootState) => state.blog.editable);
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode);
   const blogId = useSelector((state: RootState) => state.blog.id);
@@ -80,7 +80,7 @@ function NewBlog() {
         </div>
         <div className={styles.blog_details}>
           <div className={styles.blog_title_wrapper}>
-            <Input type='text' placeholder={APP_MESSAGES.BLOG.BLOG_TITLE_PLACEHOLDER} onChange={onBlogTitleChange} value={blogTitle} blogTitle />
+            <Input type='text' placeholder={APP_MESSAGES.BLOG.BLOG_TITLE_PLACEHOLDER} onChange={onBlogTitleChange} value={blogTitle} blogTitle focus={focus}/>
           </div>
           <div className={styles.blog_details_wrapper}>
             <Textarea placeholder={APP_MESSAGES.BLOG.BLOG_DETAILS_PLACEHOLDER} onChange={onBlogDetailsChange} value={blogDetails} blogDetail editable={true} />

@@ -11,7 +11,7 @@ function Checkbox(props: CheckBoxProps) {
   return (
     <div className={styles.input_wrapper}>
       <input className={`${styles.checkbox} ${dark_mode ? styles.dark_mode : ""}`} type={APP_CONSTANTS.INPUT_TYPES.CHECKBOX} checked={props?.isChecked} onChange={handleChange} />
-      <label className={`${styles.label} ${dark_mode ? styles.light_text : ""}`}>{props.label}</label>
+      <label className={`${styles.label} ${dark_mode ? styles.light_text : ""}`} onClick={handleChange}>{props.label}</label>
     </div>
   )
 }

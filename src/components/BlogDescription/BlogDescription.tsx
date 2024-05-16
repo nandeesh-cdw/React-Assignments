@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './BlogDescription.module.scss'
 import Image from '../Image/Image'
 import classNames from 'classnames'
@@ -17,12 +17,13 @@ function BlogDescription(props: any) {
   const [photo, setPhoto] = useState("")
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     setTitle(props.blog.title);
     setDetails(props.blog.details);
     setPhoto(props.blog.photo);
-
+    setFocus(false);
   }, [props.blog])
   const containerStyles = classNames(styles.container, {
     [styles.dark_background]: darkMode
@@ -51,8 +52,10 @@ function BlogDescription(props: any) {
 
   const onEditContent = () => {
     dispatch(blogActions.toggleEditMode(true));
+    setFocus(true);
   }
   const onCancel = () => {
+    setFocus(false);
     setDetails(currentBlog.details);
     setTitle(currentBlog.title);
     dispatch(blogActions.toggleEditMode(false));
@@ -71,6 +74,7 @@ function BlogDescription(props: any) {
     if (!(details.length > 10)) {
       setDetailsError(true);
     }
+    setFocus(false);
   }
   return (
 
@@ -80,7 +84,7 @@ function BlogDescription(props: any) {
           {props.blog && <Image src={photo} alt={props.title} isCardImage={true} />}
         </div>
         <div className={titleWrapperStyles}>
-          <Textarea blogTitle editable={editable} onChange={handleTitleChange} value={title} />
+          <Textarea blogTitle editable={editable} onChange={handleTitleChange} value={title} focus={focus}/>
         </div>
         <div className={descriptionWrapperStyles}>
           <Textarea blogDescription editable={editable} onChange={handleDetailsChange} value={details} />

@@ -2,7 +2,7 @@ export const APP_MESSAGES = {
     NAVBAR:{
         LITTLE:"Little",
         BOOK:"Book",
-        SWITCH_DARK_MODE:"Switch to Dark mode",
+        SWITCH_DARK_MODE:"Switch to Dark Mode",
         SWITCH_LIGHT_MODE:"Switch to Light Mode",
         VIEW_MEMBERS:"View Members",
         FILTERS:{
@@ -24,6 +24,10 @@ export const APP_MESSAGES = {
         EDIT:"EDIT CONTENT",
         CANCEL:"CANCEL",
         SAVE:"SAVE CONTENT",
-        NEW:"NEW"
+        NEW:"NEW",
+        EXIT:"EXIT",
     },
+    MODAL:{
+        EDIT_WARNING:"Seems like you're editing, Do you want to exit?",
+    }
 }
