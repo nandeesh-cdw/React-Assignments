@@ -20,10 +20,14 @@ function BlogDescription(props: any) {
   const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log("rendering" +focus);
+    
     setTitle(props.blog.title);
     setDetails(props.blog.details);
     setPhoto(props.blog.photo);
     setFocus(false);
+    setTitleError(false);
+    setDetailsError(false);
   }, [props.blog])
   const containerStyles = classNames(styles.container, {
     [styles.dark_background]: darkMode
