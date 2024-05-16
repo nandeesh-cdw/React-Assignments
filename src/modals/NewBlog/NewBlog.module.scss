@@ -3,24 +3,24 @@
 .container {
   @include flex-column;
   animation: appear 0.5s ease-in-out 0s 1 forwards;
-  width: 600px;
+  width: 37.5rem;
   height: 100%;
   background-color: $white;
-  padding: 80px 60px;
+  padding: 5rem 3.75rem;
   .title_wrapper {
     .title {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: $font-weight-500;
     }
   }
   .blog_details {
     @include flex-column;
     .blog_title_wrapper {
-      margin-top: 40px;
+      margin-top: 2.5rem;
     }
     .blog_details_wrapper {
-      margin-top: 30px;
-      height: 640px;
+      margin-top: 1.875rem;
+      height: 40rem;
     }
     .button_wrapper {
       display: flex;
@@ -30,4 +30,13 @@
 }
 .fade {
   animation: disappear 0.5s ease-in-out 0s 1 forwards;
+}
+.purple_button_big {
+  font-family: $secondary_font;
+  font-weight: $font-weight-500;
+  font-size: 1.1875rem;
+  color: $white;
+  border-radius: 25px;
+  padding: 0.625rem 3.125rem;
+  background-color: $purple;
 }

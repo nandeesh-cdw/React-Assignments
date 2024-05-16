@@ -1,9 +1,9 @@
-import React from 'react'
+import { useSelector } from 'react-redux'
+import classNames from 'classnames'
 import styles from './MemberCard.module.scss'
 import Image from '../Image/Image'
-import { useSelector } from 'react-redux'
 import { MemberCardProps, RootState } from '../../models/models'
-import classNames from 'classnames'
+
 function MemberCard(props: MemberCardProps) {
     const darkMode = useSelector((state: RootState) => state.navbar.darkMode)
     const nameStyles = classNames(styles.name, {

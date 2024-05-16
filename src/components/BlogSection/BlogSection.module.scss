@@ -3,14 +3,13 @@
 .container {
   @include flex-column;
   background-color: $light_gray;
-  width: 575px;
-  height: 990px;
-  // padding: 0 35px;
+  width: 35.9rem;
+  height: 61.8rem;
   overflow: scroll;
   .search_container {
     display: flex;
     position: sticky;
-    padding: 0 35px;
+    padding: 0 2.18rem;
     top: 0;
     left: 0;
     background-color: $light_gray;
@@ -19,19 +18,19 @@
     .search_wrapper{
       display: flex;
       align-items: center;
-      height: 115px;
+      height: 7.18rem;
     }
     
   }
   .blogs_wrapper {
-    padding: 0 35px;
+    padding: 0 2.18rem;
     @include flex-column;
-    row-gap: 15px;
+    row-gap: 0.9rem;
     list-style-type: none;
     .placeholder_text {
       margin-top: 50%;
       align-self: center;
-      font-size: 26px;
+      font-size: 1.625rem;
     }
   }
 }

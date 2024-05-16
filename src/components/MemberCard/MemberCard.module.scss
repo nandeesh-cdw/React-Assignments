@@ -2,8 +2,8 @@
 
 .card_wrapper {
   @include flex-column;
-  height: 200px;
-  width: 150px;
+  height: 12.5rem;
+  width: 9.375rem;
 
   .name_wrapper {
     margin-top: 5px;
@@ -16,7 +16,7 @@
   .location_wrapper{
     .location{
         font-family: $secondary_font;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: $font-weight-500;
     }
   }

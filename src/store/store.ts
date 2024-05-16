@@ -1,12 +1,9 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice, configureStore, createAsyncThunk } from "@reduxjs/toolkit";
 import { Blog } from "../models/models";
+import { useDispatch } from "react-redux";
+
 const initialNavbarState = {
-  filterState: {
-    isRegional: true,
-    isNational: true,
-    isInternational: true,
-    isLocal: true,
-  },
+  filterState: {},
   viewMembers: false,
   darkMode: false,
 };
@@ -24,9 +21,19 @@ const initialMembersState = {
   membersData: [{}],
 };
 
-const initialModalState = {
-  toggleWarningModal: false,
-};
+const fetchBlogsFromApi = createAsyncThunk(
+  "blog/fetchBlogsFromApi",
+  async (_, { dispatch }) => {
+    const response = await fetch("https://jsonmockserver.vercel.app/api/blogs");
+    const blogData = await response.json();
+
+    // Dispatch action to initialize filters
+    const blogTypes = Array.from(new Set(blogData.map(blog => blog.type.toLowerCase())));
+    dispatch(navbarActions.initializeFilters(blogTypes));
+
+    return blogData;
+  }
+);
 
 const navBarSlice = createSlice({
   name: "navBar",
@@ -39,21 +46,19 @@ const navBarSlice = createSlice({
       state.viewMembers = !state.viewMembers;
     },
     toggleFilter(state, action) {
-      switch (action.payload) {
-        case "regional blogs":
-          state.filterState.isRegional = !state.filterState.isRegional;
-          break;
-        case "national blogs":
-          state.filterState.isNational = !state.filterState.isNational;
-          break;
-        case "international blogs":
-          state.filterState.isInternational =
-            !state.filterState.isInternational;
-          break;
-        case "local blogs":
-          state.filterState.isLocal = !state.filterState.isLocal;
-          break;
-      }
+      const filter = action.payload;
+      state.filterState[filter] = !state.filterState[filter];
+    },
+    addFilter(state, action) {
+      state.filterState[action.payload] = true;
+    },
+    initializeFilters(state, action) {
+      const blogTypes = action.payload;
+      const initialFilters = blogTypes.reduce((filters, type) => {
+        filters[type] = true;
+        return filters;
+      }, {});
+      state.filterState = initialFilters;
     },
   },
 });
@@ -95,6 +100,26 @@ const blogSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBlogsFromApi.pending, (state) => {
+        state.showLoader = true;
+      })
+      .addCase(fetchBlogsFromApi.fulfilled, (state, action) => {
+        let nextId = 1;
+        const blogsWithId = action.payload.map((blog) => ({
+          ...blog,
+          id: nextId++,
+        }));
+        state.id = nextId;
+        state.blogData = blogsWithId;
+        state.currentBlog = blogsWithId[0];
+        state.showLoader = false;
+      })
+      .addCase(fetchBlogsFromApi.rejected, (state) => {
+        state.showLoader = false;
+      });
+  },
 });
 
 const memberSlice = createSlice({
@@ -107,28 +132,19 @@ const memberSlice = createSlice({
   },
 });
 
-const modalSlice = createSlice({
-  name: "modal",
-  initialState: initialModalState,
-  reducers: {
-    showWarningModal(state, action) {
-      state.toggleWarningModal = action.payload;
-    },
-  },
-});
 
 const store = configureStore({
   reducer: {
     navbar: navBarSlice.reducer,
     blog: blogSlice.reducer,
     member: memberSlice.reducer,
-    modal: modalSlice.reducer,
   },
 });
 
 export default store;
-
-export const modalActions = modalSlice.actions;
 export const memberActions = memberSlice.actions;
 export const navbarActions = navBarSlice.actions;
 export const blogActions = blogSlice.actions;
+export const fetchBlogs = fetchBlogsFromApi;
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;

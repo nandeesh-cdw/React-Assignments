@@ -4,13 +4,13 @@
   @include flex-column;
   animation: appear 0.5s ease-in-out 0s 1 forwards;
   height: 100%;
-  width: 600px;
+  width: 37.5rem;
   background-color: $white;
-  padding: 80px 50px;
-  row-gap: 35px;
+  padding: 5rem 3.125rem;
+  row-gap: 2.1875rem;
   .members_title {
     .title {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: $font-weight-500;
     }
   }
@@ -18,8 +18,8 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    column-gap: 25px;
-    row-gap: 30px;
+    column-gap: 1.5625rem;
+    row-gap: 1.875rem;
     list-style-type: none;
   }
 }

@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './BlogDescription.module.scss'
-import Image from '../Image/Image'
+import { useEffect,useState } from 'react'
 import classNames from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
-import { Blog, RootState } from '../../models/models'
+import styles from './BlogDescription.module.scss'
+import Image from '../Image/Image'
+import { RootState } from '../../models/models'
 import Button from '../Button/Button'
 import { blogActions } from '../../store/store'
 import { APP_MESSAGES } from '../constants/APP_MESSAGES'
 import Textarea from '../Textarea/Textarea'
+import { APP_CONSTANTS } from '../constants/APP_CONSTANTS'
 function BlogDescription(props: any) {
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode)
   const editable = useSelector((state: RootState) => state.blog.editable)
@@ -20,8 +21,6 @@ function BlogDescription(props: any) {
   const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("rendering" +focus);
-    
     setTitle(props.blog.title);
     setDetails(props.blog.details);
     setPhoto(props.blog.photo);
@@ -29,6 +28,7 @@ function BlogDescription(props: any) {
     setTitleError(false);
     setDetailsError(false);
   }, [props.blog])
+
   const containerStyles = classNames(styles.container, {
     [styles.dark_background]: darkMode
   });
@@ -66,7 +66,7 @@ function BlogDescription(props: any) {
   }
 
   const onSave = () => {
-    if (title.length > 3 && details.length > 10) {
+    if (title.length > APP_CONSTANTS.BLOG_CONSTRAINTS.TITLE_MIN_LENGTH && details.length > APP_CONSTANTS.BLOG_CONSTRAINTS.DETAILS_MIN_LENGTH) {
       const newBlog = { ...currentBlog, title: title, details: details, id: currentBlog.id };
       dispatch(blogActions.updateBlog(newBlog));
       dispatch(blogActions.currentSelectedBlog(newBlog));

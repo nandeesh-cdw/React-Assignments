@@ -1,8 +1,9 @@
+import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
 import classNames from 'classnames'
 import styles from './Input.module.scss'
 import { InputProps, RootState } from '../../models/models'
-import { useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
+
 function Input(props: InputProps) {
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode);
   const inputRef = useRef<HTMLInputElement>(null);

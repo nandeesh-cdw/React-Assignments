@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import styles from './Image.module.scss'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
+import styles from './Image.module.scss'
 import placeholderImage from '../../assets/card_placeholder.jpeg';
 import { ImageProps } from '../../models/models';
 

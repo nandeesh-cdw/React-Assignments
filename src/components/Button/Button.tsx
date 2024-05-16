@@ -1,7 +1,6 @@
-import React from 'react'
-import styles from './Button.module.scss'
 import classNames from 'classnames'
 import { useSelector } from 'react-redux'
+import styles from './Button.module.scss'
 import { ButtonProps, RootState } from '../../models/models'
 function Button(props: ButtonProps) {
   const dark_mode = useSelector((state: RootState) => state.navbar.darkMode)

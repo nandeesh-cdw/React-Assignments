@@ -1,25 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 import SideModalContainer from '../../containers/SideModalContainer/SideModalContainer';
 import styles from './MembersModal.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { navbarActions } from '../../store/store';
 import useClickOutside from '../../hooks/useClickOutside';
 import MemberCard from '../../components/MemberCard/MemberCard';
 import { RootState } from '../../models/models';
-import classNames from 'classnames';
+import { APP_MESSAGES } from '../../components/constants/APP_MESSAGES';
+
 
 function MembersModal() {
   const [showModal, setShowModal] = useState(true);
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode)
   const membersList = useSelector((state: RootState) => state.member.membersData)
   const dispatch = useDispatch();
+  let timeoutID;
   const containerRef = useClickOutside(() => {
     setShowModal(false);
-    setTimeout(() => {
+    timeoutID = setTimeout(() => {
       dispatch(navbarActions.toggleMembers());
     }, 500)
   })
-
+  useEffect(() =>{
+    return () => {
+      clearTimeout(timeoutID);
+    }
+  },[])
   const containerStyle = classNames(styles.container, {
     [styles.black_mode]: darkMode,
     [styles.fade]: !showModal
@@ -32,7 +40,7 @@ function MembersModal() {
       <div className={containerStyle} ref={containerRef}>
         <div className={styles.members_title}>
           <div className={titleStyles}>
-            Members
+            {APP_MESSAGES.MEMBERS_MODAL.MEMBERS}
           </div>
         </div>
         <div className={styles.members_wrapper} >

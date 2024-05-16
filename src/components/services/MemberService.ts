@@ -3,7 +3,7 @@ import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
 
 export const fetchMembers = async (dispatch) => {
     try {
-        const response = await fetch('https://jsonmockserver.vercel.app/api/users');
+        const response = await fetch(APP_CONSTANTS.USERS_URL);
         if(!response.ok){
             console.log("Error fetching Members");
         }

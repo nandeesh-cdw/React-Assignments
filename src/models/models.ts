@@ -21,9 +21,6 @@ export interface RootState {
   member: {
     membersData: Array<Member>;
   };
-  modal : {
-    toggleWarningModal: boolean;
-  }
 }
 export interface ButtonProps {
   label: string;
@@ -105,7 +102,7 @@ export interface MemberCardProps{
 }
 
 export interface TextareaProps{
-  editable: boolean;
+  editable?: boolean;
   blogTitle?: boolean;
   blogDescription?: boolean;
   blogDetail?: boolean;

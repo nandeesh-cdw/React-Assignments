@@ -26,8 +26,12 @@ export const APP_MESSAGES = {
         SAVE:"SAVE CONTENT",
         NEW:"NEW",
         EXIT:"EXIT",
+        ADD:"ADD"
     },
     MODAL:{
         EDIT_WARNING:"Seems like you're editing, Do you want to exit?",
+    },
+    MEMBERS_MODAL:{
+        MEMBERS:"Members"
     }
 }

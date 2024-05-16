@@ -5,16 +5,16 @@
   column-gap: 14px;
   .checkbox {
     accent-color: $purple;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 0.625rem;
   }
   .checkbox:checked {
-    font-size: 10px;
+    font-size: 0.625rem;
   }
   .label {
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }

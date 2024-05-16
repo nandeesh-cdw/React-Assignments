@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
+import classNames from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './NewBlog.module.scss'
 import SideModalContainer from '../../containers/SideModalContainer/SideModalContainer'
 import { APP_MESSAGES } from '../../components/constants/APP_MESSAGES'
 import useClickOutside from '../../hooks/useClickOutside'
-import { useDispatch, useSelector } from 'react-redux'
-import { blogActions, modalActions } from '../../store/store'
+import { blogActions, navbarActions } from '../../store/store'
 import { Blog, RootState } from '../../models/models'
-import classNames from 'classnames'
 import { APP_CONSTANTS } from '../../components/constants/APP_CONSTANTS'
+import Textarea from '../../components/Textarea/Textarea'
+import Input from '../../components/Input/Input'
+import WarningModal from '../WarningModal/WarningModal'
 
 function NewBlog() {
   const dispatch = useDispatch();
+  const filterState = useSelector((state: RootState) => state.navbar.filterState);
+  const [showWarningModal, setShowWarningModal] =useState(false);
   const [showModal, setShowModal] = useState(true);
   const [blogDetails, setBlogDetails] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
-  const [focus, setFocus] = useState(true);
   const editMode = useSelector((state: RootState) => state.blog.editable);
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode);
   const blogId = useSelector((state: RootState) => state.blog.id);
+  let timeoutID;
 
   const containerStyles = classNames(styles.container, {
     [styles.black_mode]: darkMode,
@@ -26,27 +31,39 @@ function NewBlog() {
   const titleStyles = classNames(styles.title, {
     [styles.light_text]: darkMode
   })
+  
+  useEffect(() =>{
+    dispatch(blogActions.toggleEditMode(true));
+    return () =>{
+      clearTimeout(timeoutID)
+    }
+  },[])
+  const onCancel = () =>{
+    setShowWarningModal(false);
+  }
 
+  const onExit = () =>{
+    setShowWarningModal(false);
+    dispatch(blogActions.toggleEditMode(false));
+    setShowModal(false);
+      timeoutID = setTimeout(() => {
+        dispatch(blogActions.toggleNewBlog());
+      }, 500)
+  }
   const containerRef = useClickOutside(() => {
     if (editMode) {
-      dispatch(modalActions.showWarningModal(true));
+      setShowWarningModal(true);
       return;
     }
     setShowModal(false);
-    setTimeout(() => {
+    timeoutID = setTimeout(() => {
       dispatch(blogActions.toggleNewBlog());
     }, 500)
   })
 
-  if (blogDetails.length > 0 || blogTitle.length > 0) {
-    dispatch(blogActions.toggleEditMode(true));
-  } else {
-    dispatch(blogActions.toggleEditMode(false));
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (blogTitle.length > 3 && blogDetails.length > 10) {
+    if (blogTitle.length > APP_CONSTANTS.BLOG_CONSTRAINTS.TITLE_MIN_LENGTH && blogDetails.length > APP_CONSTANTS.BLOG_CONSTRAINTS.DETAILS_MIN_LENGTH) {
       const newBlog: Blog = {
         id: blogId,
         title: blogTitle,
@@ -57,8 +74,11 @@ function NewBlog() {
       dispatch(blogActions.setId(blogId + 1));
       dispatch(blogActions.addNewBlog(newBlog));
       dispatch(blogActions.toggleEditMode(false));
+      if(!filterState[newBlog.type]){
+        dispatch(navbarActions.addFilter(newBlog.type.toLowerCase()));
+      }
       setShowModal(false);
-      setTimeout(() => {
+      timeoutID = setTimeout(() => {
         dispatch(blogActions.toggleNewBlog());
       }, 500)
     }
@@ -74,30 +94,19 @@ function NewBlog() {
         </div>
         <form className={styles.blog_details} onSubmit={handleSubmit}>
           <div className={styles.blog_title_wrapper}>
-            <input
-              type='text'
-              placeholder={APP_MESSAGES.BLOG.BLOG_TITLE_PLACEHOLDER}
-              value={blogTitle}
-              onChange={(e) => setBlogTitle(e.target.value)}
-              className={styles.blog_title_input}
-              autoFocus={focus}
-            />
+            <Input placeholder={APP_MESSAGES.BLOG.BLOG_TITLE_PLACEHOLDER} value={blogTitle} type='text' onChange={(value)=> setBlogTitle(value)} blogTitle focus/>
           </div>
           <div className={styles.blog_details_wrapper}>
-            <textarea
-              placeholder={APP_MESSAGES.BLOG.BLOG_DETAILS_PLACEHOLDER}
-              value={blogDetails}
-              onChange={(e) => setBlogDetails(e.target.value)}
-              className={styles.blog_details_textarea}
-            />
+            <Textarea value={blogDetails} placeholder={APP_MESSAGES.BLOG.BLOG_DETAILS_PLACEHOLDER} onChange={(value)=> setBlogDetails(value)} blogDetail editable={true}/>
           </div>
           <div className={styles.button_wrapper}>
-            <button type="submit" className={styles.add_blog_button}>
-              ADD
+            <button type="submit" className={styles.purple_button_big}>
+              {APP_MESSAGES.BUTTON.ADD}
             </button>
           </div>
         </form>
       </div>
+      {showWarningModal && <WarningModal onCancel={onCancel} onExit={onExit}/>}
     </SideModalContainer>
   )
 }

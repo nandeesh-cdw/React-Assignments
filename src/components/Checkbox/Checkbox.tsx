@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import styles from './Checkbox.module.scss'
 import { useSelector } from 'react-redux';
+import styles from './Checkbox.module.scss'
 import { CheckBoxProps, RootState } from '../../models/models';
 import { APP_CONSTANTS } from '../constants/APP_CONSTANTS';
 function Checkbox(props: CheckBoxProps) {

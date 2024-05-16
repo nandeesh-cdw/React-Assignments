@@ -4,16 +4,16 @@
   position: absolute;
   top: 42%;
   left: 42%;
-  width: 500px;
-  padding: 50px;
+  width: 31.25rem;
+  padding: 3.125rem;
   background-color: $white;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   .modal_wrapper {
     @include flex-column;
-    row-gap: 30px;
+    row-gap: 1.875rem;
     .button_wrapper {
       display: flex;
-      gap:20px;
+      gap:1.25rem;
     }
   }
 }

@@ -1,31 +1,20 @@
-import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './WarningModal.module.scss';
 import Button from '../../components/Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { blogActions, modalActions } from '../../store/store';
 import { RootState } from '../../models/models';
 import SideModalContainer from '../../containers/SideModalContainer/SideModalContainer';
 import { APP_MESSAGES } from '../../components/constants/APP_MESSAGES';
 
-function WarningModal() {
-    const editMode = useSelector((state: RootState) => state.blog.editable);
-    const newBlog = useSelector((state: RootState) => state.blog.newBlog);
-    const modalOpen = useSelector((state: RootState) => state.modal.toggleWarningModal);
+function WarningModal(props:any) {
     const dispatch = useDispatch();
 
     const onCancel = (event) => {
         event.stopPropagation();
-        dispatch(modalActions.showWarningModal(false));
+        props.onCancel();
     }
     const onExit = (event) => {
         event.stopPropagation();
-        if (editMode) {
-            dispatch(blogActions.toggleEditMode(false))
-        }
-        if (newBlog) {
-            dispatch(blogActions.toggleNewBlog());
-        }
-        dispatch(modalActions.showWarningModal(false));
+        props.onExit();
     }
     return (
         <SideModalContainer>

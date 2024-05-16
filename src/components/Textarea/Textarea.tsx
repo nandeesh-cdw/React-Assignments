@@ -1,15 +1,13 @@
 import classNames from 'classnames'
-import React, { useEffect, useRef } from 'react'
-import styles from './Textarea.module.scss'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
+import styles from './Textarea.module.scss'
 import { RootState, TextareaProps } from '../../models/models'
 function Textarea(props: TextareaProps) {
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode)
   const editable = props?.editable;
   const titleTextareaRef = useRef<HTMLTextAreaElement>(null);
-  console.log("Focus" +props.focus);
   useEffect(() => {
-    console.log("Focus" +props.focus);
     
     if(props.focus) {
 

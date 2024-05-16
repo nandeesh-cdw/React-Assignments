@@ -2,10 +2,10 @@
 
 .container {
   @include flex-column;
-  row-gap: 20px;
+  row-gap: 1.25rem;
   .title_wrapper {
     .title {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-family: $secondary_font;
       color: $black;
       font-weight: $font-weight-500;
@@ -15,6 +15,6 @@
   .checkbox_wrapper {
     list-style-type: none;
     @include flex-column;
-    row-gap: 15px;
+    row-gap:0.9rem;
   }
 }

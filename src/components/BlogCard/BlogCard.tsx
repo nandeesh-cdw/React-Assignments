@@ -1,8 +1,7 @@
-import React from 'react'
-import styles from './BlogCard.module.scss'
-import { BlogProps, RootState } from '../../models/models'
 import classNames from 'classnames'
 import { useSelector } from 'react-redux'
+import styles from './BlogCard.module.scss'
+import { BlogProps, RootState } from '../../models/models'
 function BlogCard(props: BlogProps) {
   const darkMode = useSelector((state: RootState) => state.navbar.darkMode);
 
